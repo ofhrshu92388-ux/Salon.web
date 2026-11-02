@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Shalon | Salon Details</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="salon.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Yesteryear&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#01040a; --bg2:#030812; --gold:#dfb15b; --cream:#f7e6b0;
+  --text:#e9e1d8; --muted:#b9ada1; --line:rgba(223,177,91,.25);
+}
+*{box-sizing:border-box}
+html,body{overflow-x:clip}
+body{margin:0 auto;max-width:420px;width:100%;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:"Cormorant Garamond","Times New Roman",serif;font-weight:600;margin:0;line-height:1.1}
+.mobile-container{position:relative;width:100%;max-width:420px;margin:0 auto;overflow-x:clip}
+section{padding:24px 20px}
+
+/* ===== NAVBAR + BRAND (same as index) ===== */
+.nv{width:calc(100% - 30px);max-width:380px;margin:0;left:50%;transform:translateX(-50%)}
+.nvc{width:calc(100% - 20px);max-width:390px}
+.brand-nav{position:absolute;top:50%;left:50%;right:auto;transform:translate(-50%,-50%);width:max-content;max-width:none;z-index:999;text-decoration:none;display:flex;align-items:center;gap:8px}
+.brand-nav i{color:var(--gold);font-size:18px}
+.brand-nav b{display:block;font-family:"Cormorant Garamond",serif;font-size:20px;color:#fff;letter-spacing:2px;line-height:1}
+.brand-nav small{display:block;font-size:8px;letter-spacing:3px;color:var(--gold)}
+.brand-nav span{text-align:left}
+
+/* ===== BUTTONS ===== */
+.btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;line-height:1.2;min-height:44px;padding:13px 26px;border-radius:40px;font-size:14px;font-family:inherit;text-decoration:none;border:1px solid var(--gold);color:var(--gold);background:transparent;-webkit-appearance:none;appearance:none;cursor:pointer;gap:8px;transition:background .2s,color .2s}
+.btn:hover{background:rgba(223,177,91,.12)}
+.btn.solid:hover{background:var(--cream)}
+.btn.added{background:var(--gold);color:#1a0f0a;font-weight:600}
+.btn.solid{background:var(--gold);color:#1a0f0a;font-weight:600}
+.btn.block{display:flex;width:100%}
+.btn:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+/* ===== SECTION HEADING (silver-gold) ===== */
+.crh{
+  font-size:25px;
+  background:linear-gradient(90deg,#bfc1c2 0%,#f5f5f5 20%,#d4af37 45%,#ffe58a 60%,#c0c0c0 80%,#d4af37 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  color:#d4af37;
+  padding:28px 40px 0 20px;line-height:1.7;
+  font-family:"Yesteryear",cursive;font-weight:400;font-style:normal;
+  filter:drop-shadow(0 0 6px rgba(212,175,55,.35));
+}
+
+/* ===== CERTIFICATES ===== */
+.crt{width:390px;max-width:calc(100% - 40px);height:250px;margin:10px auto 0;position:relative;overflow:hidden;border-radius:12px;border:1px solid var(--line)}
+.crtimg{width:100%;height:100%;object-fit:cover;display:block}
+
+/* ===== DESCRIPTION ===== */
+.dp{font-size:15px;color:var(--muted);padding:20px 24px 4px;line-height:1.8;margin:0}
+
+/* ===== STATS ===== */
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:88%;max-width:320px;margin:0 auto}
+.stat{border:1px solid var(--line);border-radius:12px;padding:10px 8px;text-align:center;display:flex;flex-direction:column;justify-content:center;background:var(--bg2)}
+.stat b{font-family:"Cormorant Garamond",serif;font-size:26px;color:var(--gold);display:block;line-height:1.1}
+.stat span{font-size:11px;color:var(--muted)}
+
+/* ===== OWNER CARD ===== */
+.dhr{width:calc(100% - 40px);min-height:200px;border-radius:16px;margin:12px auto 0;display:flex;overflow:hidden;background:rgba(255,255,255,.06);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);border:0;box-shadow:0 8px 20px rgba(0,0,0,.35),inset 0 1px 1px rgba(255,255,255,.12)}
+.dhrd{width:66%;padding:18px 10px;text-align:center;display:flex;flex-direction:column;justify-content:center}
+.dhrdh{font-size:19px;color:var(--gold);margin:0 0 6px}
+.dhrdp{font-size:14px;color:var(--text);margin:2px 0;line-height:1.7;padding:4px}
+.dhrdp i{color:var(--gold)}
+.dhri{width:34%;display:flex;align-items:center;justify-content:center;padding-right:10px}
+.dhrkimg{width:100%;height:80%;position:relative;border-radius:10px;overflow:hidden;border:0}
+.dhrimg{width:100%;height:100%;position:absolute;top:0;left:0;object-fit:cover;object-position:center top}
+
+/* ===== WHY CHOOSE US ===== */
+.why{display:grid;gap:12px}
+.why-item{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--line);border-radius:16px;padding:16px;background:var(--bg2)}
+.why-item i{width:42px;height:42px;flex:none;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--gold);font-size:16px}
+.why-item h3{font-size:22px;color:#fff;margin-bottom:4px}
+.why-item p{margin:0;font-size:13px;color:var(--muted)}
+
+/* ===== PRODUCTS (2-column grid) ===== */
+.pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding:4px 0 8px}
+.item{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:16px;background:var(--bg2);overflow:hidden}
+.item .pic{height:130px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.item .pic img{width:100%;height:100%;object-fit:contain;object-position:center}
+.item .body{padding:12px;display:flex;flex-direction:column;flex:1}
+.item h3{font-size:17px;color:#fff}
+.item .price{color:var(--gold);font-weight:600;font-size:15px;margin:6px 0 0;padding-bottom:12px;margin-bottom:auto}
+.item .btn{padding:10px 14px;min-height:38px;font-size:13px}
+
+/* ===== CARDS (reviews / visit / cta) ===== */
+.event{border:1px solid var(--line);border-radius:16px;padding:18px;background:var(--bg2);margin-top:14px}
+.event:first-child{margin-top:0}
+.event h3{font-size:26px;color:#fff}
+.event p{font-size:13px;color:var(--muted);margin:6px 0 14px}
+.event .who{display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.event .who b{color:var(--cream);font-family:"Cormorant Garamond",serif;font-size:18px}
+.stars{color:var(--gold);letter-spacing:2px;font-size:14px}
+.info{list-style:none;margin:0 0 16px;padding:0}
+.info li{display:flex;gap:12px;align-items:flex-start;padding:8px 0;font-size:14px;color:var(--text)}
+.info i{width:34px;height:34px;flex:none;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--gold);font-size:13px}
+.info small{display:block;color:var(--muted);font-size:12px}
+.cta-box{text-align:center}
+.cta-box h3{font-size:30px;color:var(--cream)}
+.cta-box p{margin:8px 0 18px}
+
+/* ===== FOOTER (same as index) ===== */
+.footer{display:flex;flex-direction:column;flex-wrap:nowrap;align-items:stretch;width:100%;height:auto;background:linear-gradient(180deg,var(--bg2),#000205);border-top:1px solid var(--line);padding:44px 22px 28px;margin-top:28px}
+.footer>*{width:100%;flex:none}
+.f-brand{text-align:center}
+.f-brand .mark{width:54px;height:54px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;margin:0 auto 12px;color:var(--gold);font-size:20px}
+.f-brand b{display:block;font-family:"Cormorant Garamond",serif;font-size:30px;color:#fff;letter-spacing:3px}
+.f-brand p{font-size:13px;color:var(--muted);margin:8px auto 0;max-width:280px}
+.f-news{margin:28px 0;padding:18px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.03)}
+.f-news h3{font-size:22px;color:var(--cream);margin-bottom:12px}
+.news{display:flex;gap:8px;align-items:stretch}
+.news input{flex:1;min-width:0;padding:13px 16px;border-radius:40px;border:1px solid var(--line);background:transparent;color:#fff;font-size:14px}
+.news input:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.news .btn{padding:13px 18px;flex:none;min-height:0}
+.f-cols{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:26px}
+.f-cols>div{min-width:0}
+.f-cols h4{font-family:"Cormorant Garamond",serif;font-size:20px;color:var(--gold);margin:0 0 10px;font-weight:600}
+.f-cols ul{list-style:none;margin:0;padding:0}
+.f-cols li{padding:5px 0;font-size:14px}
+.f-cols a{text-decoration:none;color:var(--muted)}
+.f-cols a:hover{color:var(--gold)}
+.f-cols small{display:block;font-size:12px;color:#8d8176}
+.f-contact{display:block;list-style:none;margin:0 0 22px;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.f-contact li{display:flex;align-items:center;gap:12px;padding:7px 0;font-size:14px;color:var(--text)}
+.f-contact i{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--gold);font-size:13px;flex:none}
+.social{display:flex;justify-content:center;gap:12px;margin:0 0 6px}
+.social a{width:44px;height:44px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--gold);text-decoration:none}
+.social a:hover{background:var(--gold);color:#1a0f0a}
+.copy{text-align:center;font-size:11px;color:#8d8176;margin:22px 0 0}
+
+/* ================= CART STYLES ================= */
+/* ===== SHALON CART STYLES ===== */
+
+/* Floating cart button (420px wale container ke andar rehta hai) */
+.cart-fab{
+  position:fixed;bottom:18px;
+  right:max(16px, calc(50% - 210px + 16px));
+  width:56px;height:56px;border-radius:50%;
+  background:var(--gold,#dfb15b);color:#1a0f0a;
+  border:0;font-size:20px;cursor:pointer;z-index:900;
+  display:grid;place-items:center;
+  box-shadow:0 6px 18px rgba(0,0,0,.5);
+}
+.cart-fab:focus-visible,.cart-panel button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.cart-fab.bump{animation:cartBump .35s ease}
+@keyframes cartBump{50%{transform:scale(1.15)}}
+.cart-count{
+  position:absolute;top:-4px;right:-4px;min-width:22px;height:22px;padding:0 5px;
+  border-radius:11px;background:#fff;color:#1a0f0a;
+  font:700 12px system-ui,sans-serif;display:none;place-items:center;
+}
+
+/* Overlay + panel */
+.cart-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.65);
+  opacity:0;pointer-events:none;transition:opacity .25s;z-index:1000;
+}
+.cart-overlay.open{opacity:1;pointer-events:auto}
+
+.cart-panel{
+  position:fixed;bottom:0;left:50%;
+  width:100%;max-width:420px;max-height:82vh;
+  transform:translate(-50%,100%);transition:transform .3s ease;
+  background:var(--bg2,#030812);color:var(--text,#e9e1d8);
+  border:1px solid var(--line,rgba(223,177,91,.25));border-bottom:0;
+  border-radius:22px 22px 0 0;
+  display:flex;flex-direction:column;z-index:1001;
+}
+.cart-panel.open{transform:translate(-50%,0)}
+
+.cart-head{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 20px 12px;border-bottom:1px solid var(--line,rgba(223,177,91,.25));
+}
+.cart-head h3{font-size:28px;color:var(--cream,#f7e6b0)}
+.cart-close{background:none;border:0;color:var(--gold,#dfb15b);font-size:32px;line-height:1;cursor:pointer;padding:0 4px}
+
+.cart-items{padding:8px 20px;overflow-y:auto;flex:1}
+.cart-empty{text-align:center;color:var(--muted,#b9ada1);font-size:14px;padding:30px 0}
+
+.cart-row{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid rgba(223,177,91,.12)}
+.cart-row img{width:60px;height:60px;border-radius:10px;object-fit:contain;background:#fff;flex:none}
+.cart-info{flex:1;min-width:0}
+.cart-info h4{margin:0;font:600 15px system-ui,sans-serif;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cart-info span{display:block;color:var(--gold,#dfb15b);font-weight:600;font-size:14px;margin:2px 0 6px}
+
+.cart-qty{display:inline-flex;align-items:center;border:1px solid var(--line,rgba(223,177,91,.25));border-radius:20px;overflow:hidden}
+.cart-qty button{width:32px;height:30px;background:none;border:0;color:var(--gold,#dfb15b);font-size:18px;cursor:pointer}
+.cart-qty b{min-width:26px;text-align:center;font-size:14px;color:#fff}
+.cart-del{background:none;border:0;color:#b9ada1;font-size:15px;cursor:pointer;padding:10px}
+.cart-del:hover{color:#ff6b6b}
+
+.cart-foot{padding:14px 20px 20px;border-top:1px solid var(--line,rgba(223,177,91,.25))}
+.cart-total{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:15px}
+.cart-total b{font:600 28px "Cormorant Garamond",serif;color:var(--gold,#dfb15b)}
+.cart-clear{display:block;margin:12px auto 0;background:none;border:0;color:var(--muted,#b9ada1);font-size:12px;text-decoration:underline;cursor:pointer}
+
+/* Toast */
+.cart-toast{
+  position:fixed;left:50%;bottom:90px;transform:translate(-50%,20px);
+  background:var(--gold,#dfb15b);color:#1a0f0a;font:600 13px system-ui,sans-serif;
+  padding:10px 18px;border-radius:30px;opacity:0;pointer-events:none;
+  transition:opacity .25s,transform .25s;z-index:1100;max-width:90%;text-align:center;
+}
+.cart-toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media (prefers-reduced-motion:reduce){
+  .cart-panel,.cart-overlay,.cart-toast{transition:none}
+  .cart-fab.bump{animation:none}
+}
+
+/* ===== CHECKOUT ADD-ONS ===== */
+.cart-main{display:flex;flex-direction:column;flex:1;min-height:0}
+.cart-scroll{padding:8px 20px 12px;overflow-y:auto;flex:1}
+.co-title{font:600 22px "Cormorant Garamond",serif;color:var(--cream,#f7e6b0);margin:10px 0}
+.co-field{display:block;margin-bottom:12px;font-size:12px;color:var(--muted,#b9ada1)}
+.co-field input{display:block;width:100%;margin-top:6px;padding:12px 16px;border-radius:30px;border:1px solid var(--line,rgba(223,177,91,.25));background:transparent;color:#fff;font:14px system-ui,sans-serif}
+.co-field input:focus-visible{outline:2px solid var(--gold,#dfb15b);outline-offset:2px}
+.pay-opt{display:flex;gap:12px;align-items:center;border:1px solid var(--line,rgba(223,177,91,.25));border-radius:14px;padding:12px 14px;margin-bottom:10px;cursor:pointer}
+.pay-opt input{accent-color:#dfb15b;width:18px;height:18px;flex:none}
+.pay-opt b{display:block;font-size:14px;color:#fff;font-weight:600}
+.pay-opt small{color:var(--muted,#b9ada1);font-size:12px}
+.pay-opt:has(input:checked){border-color:var(--gold,#dfb15b);background:rgba(223,177,91,.08)}
+.co-sum{display:flex;justify-content:space-between;align-items:center;margin-top:14px;font-size:15px}
+.co-sum b{font:600 26px "Cormorant Garamond",serif;color:var(--gold,#dfb15b)}
+.co-err{color:#ff6b6b;font-size:12px;min-height:16px;margin:6px 0 0}
+.note{font-size:12px;color:var(--muted,#b9ada1);margin:10px 0;line-height:1.6}
+.note.strong{color:var(--cream,#f7e6b0)}
+.upi-id{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:14px 0;padding:10px 14px;border:1px dashed var(--line,rgba(223,177,91,.25));border-radius:12px;font-size:13px}
+.upi-id b{color:#fff;word-break:break-all}
+.upi-id button{background:none;border:1px solid var(--gold,#dfb15b);color:var(--gold,#dfb15b);border-radius:20px;padding:6px 14px;font-size:12px;cursor:pointer;flex:none}
+.tick{width:64px;height:64px;border-radius:50%;background:var(--gold,#dfb15b);color:#1a0f0a;display:grid;place-items:center;font-size:26px;margin:10px auto 0}
+.done{text-align:center}
+.done-lines{list-style:none;margin:12px 0;padding:0;text-align:left;font-size:13px}
+.done-lines li{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid rgba(223,177,91,.12)}
+.done-lines li b{color:var(--gold,#dfb15b);font-weight:600;flex:none}
+.done-lines .tot{border-bottom:0;font-size:15px}
+.cart-foot .btn+.btn{margin-top:10px}
+.cart-foot .btn+.cart-clear{margin-top:12px}
+</style>
+</head>
+
+<body>
+<div class="mobile-container">
+
+  <!-- NAVBAR + BRAND -->
+  <nav class="nv">
+    <div class="nvmn">
+      <div class="menu-circle">
+        <svg viewBox="0 0 100 100">
+          <defs><path id="menuPath" d="M50,50 m-36,0 a36,36 0 1,1 72,0 a36,36 0 1,1 -72,0"/></defs>
+          <text><textPath href="#menuPath">MENUㅤ ㅤ MENU ㅤㅤ MENU</textPath></text>
+        </svg>
+        <i class="fa-solid fa-scissors"></i>
+      </div>
+    </div>
+    <a href="index.html" class="brand-nav" aria-label="Salon home">
+      <i class="fa-solid fa-scissors"></i>
+      <span><b>SHALON</b><small>HAIR &amp; STYLE</small></span>
+    </a>
+  </nav>
+
+  <nav class="nvc" id="menuPanel">
+    <a href="#" class="close-btn" id="menuClose">&times;</a>
+    <div class="nvcb"><a href="index.html" class="nvch"><h1 class="nvchh">HOME</h1></a></div>
+    <div class="nvcb"><a href="special.html" class="nvch"><h1 class="nvchh">EXCLUSIVE SERVICE</h1></a></div>
+    <div class="nvcb"><a href="booking.html" class="nvch"><h1 class="nvchh">BOOKING PAGE</h1></a></div>
+    <div class="nvcb"><a href="SALON DETAIL.html" class="nvch"><h1 class="nvchh">About Shalon</h1></a></div>
+    <div class="nvcb"><a href="login.html" class="nvch"><h1 class="nvchh">LOGIN</h1></a></div>
+  </nav>
+  <div class="gpn"></div>
+
+  <!-- 1. CERTIFICATES -->
+  <h1 class="crh">Salon Certificate ~</h1>
+  <div class="crt"><img src="https://www.shutterstock.com/shutterstock/photos/1281516322/display_1500/stock-vector-certificate-for-barbers-and-hairdressers-1281516322.jpg" alt="Salon certificate" class="crtimg"></div>
+  <div class="crt"><img src="https://img.magnific.com/free-vector/professional-award-certificate-template-silver-classy-design_53876-116412.jpg?semt=ais_hybrid&w=740&q=80" alt="Professional award certificate" class="crtimg"></div>
+
+  <!-- 2. DESCRIPTION -->
+  <p class="dp">
+    हमारा salon एक modern और professional grooming destination है,
+    जहाँ हर client को बेहतर styling experience, clean environment और
+    personalized service देने पर विशेष ध्यान दिया जाता है। हमारी
+    skilled team latest styling techniques और quality products के साथ
+    आपके look को आपकी personality के अनुसार बेहतर बनाने का प्रयास
+    करती है। Haircut, styling और makeup से लेकर everyday और special
+    occasions के लिए grooming तक, हमारा उद्देश्य है कि हर visit के
+    बाद आप अपने look को लेकर confident और satisfied महसूस करें।
+    हमारे salon में hygiene, comfort और customer satisfaction को
+    सबसे अधिक priority दी जाती है।
+  </p>
+
+  <!-- 3. STATS -->
+  <h1 class="crh">Shalon in Numbers ~</h1>
+  <section>
+    <div class="stats">
+      <div class="stat"><b>5K+</b><span>Happy clients</span></div>
+      <div class="stat"><b>50+</b><span>Services</span></div>
+      <div class="stat"><b>10+</b><span>Expert stylists</span></div>
+      <div class="stat"><b>100%</b><span>Sterilized tools</span></div>
+    </div>
+  </section>
+
+  <!-- 4. OWNER -->
+  <h1 class="crh">Salon Owner ~</h1>
+  <div class="dhr">
+    <div class="dhrd">
+      <h2 class="dhrdh">NAME : Rahul Sharma</h2>
+      <p class="dhrdp">Owner &amp; Founder <br>Experience : 10+ Years <br><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
+    </div>
+    <div class="dhri">
+      <div class="dhrkimg">
+        <img src="https://plus.unsplash.com/premium_photo-1689977927774-401b12d137d6?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" alt="Owner" class="dhrimg">
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. WHY CHOOSE US -->
+  <h1 class="crh">Why Choose Us ~</h1>
+  <section>
+    <div class="why">
+      <div class="why-item"><i class="fa-solid fa-shield-heart"></i><div><h3>Clean &amp; hygienic</h3><p>Har tool har client ke baad sterilize hota hai.</p></div></div>
+      <div class="why-item"><i class="fa-solid fa-scissors"></i><div><h3>Trained stylists</h3><p>Latest techniques aur har hair type ka experience.</p></div></div>
+      <div class="why-item"><i class="fa-solid fa-spray-can-sparkles"></i><div><h3>Premium products</h3><p>Sirf professional aur trusted brands ka use.</p></div></div>
+      <div class="why-item"><i class="fa-solid fa-clock"></i><div><h3>No waiting</h3><p>Apna time book karo aur seedha seat par baitho.</p></div></div>
+    </div>
+  </section>
+
+  <!-- 6. PRODUCTS -->
+  <h1 class="crh">Hair Care Products ~</h1>
+  <section>
+    <div class="pgrid">
+      <div class="item"><div class="pic"><img src="https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/products/pictures/item/free/original/000000000494474609/dKJJhAcTXdD-000000000494474609_1.jpg" alt="Hair serum" loading="lazy"></div><div class="body"><h3>Hair Serum</h3><div class="price">₹299</div><button type="button" class="btn block add-to-cart" data-id="serum" data-name="Hair Serum" data-price="299" data-img="https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/products/pictures/item/free/original/000000000494474609/dKJJhAcTXdD-000000000494474609_1.jpg">Add to cart</button></div></div>
+      <div class="item"><div class="pic"><img src="https://sfycdn.speedsize.com/56385b25-4e17-4a9a-9bec-c421c18686fb/beminimalist.co/cdn/shop/files/Artboard_1_copy_13_1.jpg?crop=center&amp;height=1260&amp;v=1776762556&amp;width=840" alt="Hair shampoo" loading="lazy"></div><div class="body"><h3>Hair Shampoo</h3><div class="price">₹349</div><button type="button" class="btn block add-to-cart" data-id="shampoo" data-name="Hair Shampoo" data-price="349" data-img="https://sfycdn.speedsize.com/56385b25-4e17-4a9a-9bec-c421c18686fb/beminimalist.co/cdn/shop/files/Artboard_1_copy_13_1.jpg?crop=center&amp;height=1260&amp;v=1776762556&amp;width=840">Add to cart</button></div></div>
+      <div class="item"><div class="pic"><img src="https://images-static.nykaa.com/media/catalog/product/e/d/eddc22fOLAPL00000002_1.png?tr=w-344,h-344,cm-pad_resize" alt="Hair conditioner" loading="lazy"></div><div class="body"><h3>Hair Conditioner</h3><div class="price">₹399</div><button type="button" class="btn block add-to-cart" data-id="conditioner" data-name="Hair Conditioner" data-price="399" data-img="https://images-static.nykaa.com/media/catalog/product/e/d/eddc22fOLAPL00000002_1.png?tr=w-344,h-344,cm-pad_resize">Add to cart</button></div></div>
+      <div class="item"><div class="pic"><img src="https://m.media-amazon.com/images/I/81DycYsQi0L.jpg" alt="Beard oil" loading="lazy"></div><div class="body"><h3>Beard Oil</h3><div class="price">₹249</div><button type="button" class="btn block add-to-cart" data-id="beard-oil" data-name="Beard Oil" data-price="249" data-img="https://m.media-amazon.com/images/I/81DycYsQi0L.jpg">Add to cart</button></div></div>
+    </div>
+  </section>
+
+  <!-- 7. REVIEWS -->
+  <h1 class="crh">Client Reviews ~</h1>
+  <section>
+    <div class="event">
+      <div class="stars" aria-label="5 stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+      <p>Bahut hygienic salon hai aur staff ka kaam perfect hai. Haircut bilkul waisa mila jaisa chahiye tha.</p>
+      <div class="who"><b>Amit Verma</b><span>Haircut &amp; Styling</span></div>
+    </div>
+    <div class="event">
+      <div class="stars" aria-label="5 stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+      <p>Colour ka result mast aaya aur kaafi time tak fresh raha. Wapas zaroor aaunga.</p>
+      <div class="who"><b>Rohit Jain</b><span>Hair Colour</span></div>
+    </div>
+  </section>
+
+  <!-- 8. VISIT US -->
+  <h1 class="crh">Visit Us ~</h1>
+  <section>
+    <div class="event">
+      <ul class="info">
+        <li><i class="fa-solid fa-clock"></i><div>Mon – Sat : 10:00 AM – 9:00 PM<small>Sunday : 11:00 AM – 7:00 PM</small></div></li>
+        <li><i class="fa-solid fa-location-dot"></i><div>Shop No. xx, Main Road, Indore, MP<small>Parking available</small></div></li>
+        <li><i class="fa-solid fa-phone"></i><div>+91 98765 43210</div></li>
+      </ul>
+      <a href="https://maps.google.com" class="btn block" target="_blank" rel="noopener">Get directions</a>
+    </div>
+  </section>
+
+  <!-- 9. BOOK CTA -->
+  <section>
+    <div class="event cta-box">
+      <h3>Ready for a new look?</h3>
+      <p>Apni seat abhi book karo aur wait se bacho.</p>
+      <a href="booking.html" class="btn solid block">Book now</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="f-brand">
+      <div class="mark"><i class="fa-solid fa-scissors"></i></div>
+      <b>SHALON</b>
+      <p>Fresh, clean and hygienic salon care with expertise in every detail.</p>
+    </div>
+
+    <div class="f-news">
+      <h3>Get offers &amp; hair tips</h3>
+      <form class="news" onsubmit="return false">
+        <input type="email" placeholder="Your email address" aria-label="Email address">
+        <button class="btn solid" type="submit">Sign up</button>
+      </form>
+    </div>
+
+    <div class="f-cols">
+      <div>
+        <h4>Quick links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="special.html">Exclusive service<small>सैलून की विशिष्ट सेवाएँ</small></a></li>
+          <li><a href="booking.html">Booking<small>अपना पसंदीदा समय बुक करें</small></a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="SALON DETAIL.html">About Shalon<small>हमारी पहचान</small></a></li>
+          <li><a href="booking.html">Book a seat</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <ul class="f-contact">
+      <li><i class="fa-solid fa-envelope"></i> your_mail@gmail.com</li>
+      <li><i class="fa-solid fa-phone"></i> +91-xxxxx-xxxxx</li>
+    </ul>
+
+    <div class="social">
+      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+    <p class="copy">© 2026 Shalon. All rights reserved.</p>
+  </footer>
+
+</div>
+
+<script src="salon.js"></script>
+<script>
+/* ===== SHALON CART + CHECKOUT (UPI / Pay at salon) ===== */
+(function () {
+  /* ---------- APNI DETAILS YAHAN BHARO ---------- */
+  var CONFIG = {
+    salonName: 'Shalon Hair & Style',
+    upiId: 'yourname@upi',          // salon ka UPI ID (GPay / PhonePe / Paytm wala)
+    ownerWhatsapp: '919876543210'   // owner ka number: 91 ke saath, bina + ya space
+  };
+
+  var CART_KEY = 'shalonCart', ORDERS_KEY = 'shalonOrders', CUST_KEY = 'shalonCustomer';
+  var cart = load(CART_KEY, []);
+  var view = 'cart';        // cart | checkout | upi | done
+  var pending = null;       // order jo abhi payment ka wait kar raha hai
+  var lastOrder = null;     // order jo abhi place hua
+
+  function load(k, d) { try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch (e) { return d; } }
+  function save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function count() { return cart.reduce(function (n, i) { return n + i.qty; }, 0); }
+  function total() { return cart.reduce(function (n, i) { return n + i.qty * i.price; }, 0); }
+  function money(n) { return '\u20B9' + Number(n).toLocaleString('en-IN'); }
+
+  /* ---------- UI inject ---------- */
+  var fab = document.createElement('button');
+  fab.className = 'cart-fab'; fab.type = 'button'; fab.setAttribute('aria-label', 'Open cart');
+  fab.innerHTML = '<i class="fa-solid fa-bag-shopping"></i><span class="cart-count">0</span>';
+
+  var overlay = document.createElement('div'); overlay.className = 'cart-overlay';
+
+  var panel = document.createElement('aside');
+  panel.className = 'cart-panel'; panel.setAttribute('aria-label', 'Your cart');
+  panel.innerHTML =
+    '<div class="cart-head"><h3 id="cartTitle">Your cart</h3>' +
+    '<button type="button" class="cart-close" aria-label="Close cart">&times;</button></div>' +
+    '<div class="cart-main"></div>';
+
+  var toast = document.createElement('div');
+  toast.className = 'cart-toast'; toast.setAttribute('role', 'status');
+
+  document.body.appendChild(fab); document.body.appendChild(overlay);
+  document.body.appendChild(panel); document.body.appendChild(toast);
+
+  var main = panel.querySelector('.cart-main');
+  var titleEl = panel.querySelector('#cartTitle');
+  var countEl = fab.querySelector('.cart-count');
+
+  /* ---------- Views ---------- */
+  function render() {
+    var n = count();
+    countEl.textContent = n;
+    countEl.style.display = n ? 'grid' : 'none';
+
+    if (view === 'checkout' && !cart.length) view = 'cart';
+    if (view === 'cart') return viewCart();
+    if (view === 'checkout') return viewCheckout();
+    if (view === 'upi') return viewUpi();
+    if (view === 'done') return viewDone();
+  }
+
+  function viewCart() {
+    titleEl.textContent = 'Your cart';
+    var rows = cart.map(function (i) {
+      return '<div class="cart-row" data-id="' + esc(i.id) + '">' +
+        '<img src="' + esc(i.img) + '" alt="' + esc(i.name) + '">' +
+        '<div class="cart-info"><h4>' + esc(i.name) + '</h4><span>' + money(i.price) + '</span>' +
+        '<div class="cart-qty"><button type="button" data-act="dec" aria-label="Decrease">\u2212</button><b>' + i.qty +
+        '</b><button type="button" data-act="inc" aria-label="Increase">+</button></div></div>' +
+        '<button type="button" class="cart-del" data-act="del" aria-label="Remove ' + esc(i.name) + '"><i class="fa-solid fa-trash"></i></button></div>';
+    }).join('');
+
+    main.innerHTML =
+      '<div class="cart-items">' + (rows || '<p class="cart-empty">Cart khaali hai. Koi product add karo.</p>') + '</div>' +
+      (cart.length ?
+        '<div class="cart-foot"><div class="cart-total"><span>Total</span><b>' + money(total()) + '</b></div>' +
+        '<button type="button" class="btn solid block" data-go="checkout">Proceed to pay</button>' +
+        '<button type="button" class="cart-clear" data-go="clear">Clear cart</button></div>' : '');
+  }
+
+  function viewCheckout() {
+    titleEl.textContent = 'Checkout';
+    var c = load(CUST_KEY, { name: '', phone: '' });
+    var au = window.shalonAuth;
+    if (au && !c.name) c.name = au.name || '';
+    main.innerHTML =
+      '<div class="cart-scroll">' +
+      '<h4 class="co-title">Your details</h4>' +
+      (au ? '<p class="note">Login: <b>' + esc(au.email) + '</b> (verified)</p>' : '') +
+      '<label class="co-field">Name<input id="coName" type="text" autocomplete="name" value="' + esc(c.name) + '" placeholder="Aapka naam"></label>' +
+      '<label class="co-field">WhatsApp number<input id="coPhone" type="tel" inputmode="numeric" maxlength="10" autocomplete="tel-national" value="' + esc(c.phone) + '" placeholder="10 digit mobile number"></label>' +
+      '<h4 class="co-title">Payment</h4>' +
+      '<label class="pay-opt"><input type="radio" name="pm" value="upi" checked><span><b>Pay online (UPI)</b><small>GPay, PhonePe, Paytm se</small></span></label>' +
+      '<label class="pay-opt"><input type="radio" name="pm" value="cash"><span><b>Pay at salon</b><small>Product lete waqt payment karo</small></span></label>' +
+      '<div class="co-sum"><span>Total</span><b>' + money(total()) + '</b></div>' +
+      '<p class="co-err" id="coErr" role="alert"></p></div>' +
+      '<div class="cart-foot"><button type="button" class="btn solid block" data-go="pay">Continue</button>' +
+      '<button type="button" class="cart-clear" data-go="back">Back to cart</button></div>';
+  }
+
+  function upiLink(o) {
+    return 'upi://pay?pa=' + encodeURIComponent(CONFIG.upiId) +
+      '&pn=' + encodeURIComponent(CONFIG.salonName) +
+      '&am=' + o.total.toFixed(2) + '&cu=INR&tn=' + encodeURIComponent('Order ' + o.id);
+  }
+
+  function viewUpi() {
+    titleEl.textContent = 'Pay with UPI';
+    main.innerHTML =
+      '<div class="cart-scroll">' +
+      '<p class="note">Order <b>#' + esc(pending.id) + '</b> &bull; Amount <b>' + money(pending.total) + '</b></p>' +
+      '<a class="btn solid block" href="' + esc(upiLink(pending)) + '">Pay ' + money(pending.total) + ' with UPI app</a>' +
+      '<div class="upi-id"><span>UPI ID: <b>' + esc(CONFIG.upiId) + '</b></span>' +
+      '<button type="button" data-go="copy">Copy</button></div>' +
+      '<label class="co-field">UPI Transaction ID (UTR), optional<input id="coUtr" type="text" maxlength="22" placeholder="Payment ke baad app me dikhta hai"></label>' +
+      '<p class="note">Payment hone ke baad neeche wala button dabao. Mobile par UPI app khulta hai. Computer par UPI ID copy karke apne phone se pay karo.</p></div>' +
+      '<div class="cart-foot"><button type="button" class="btn block" data-go="paid">Maine payment kar diya</button>' +
+      '<button type="button" class="cart-clear" data-go="checkout">Back</button></div>';
+  }
+
+  function viewDone() {
+    var o = lastOrder;
+    titleEl.textContent = 'Order placed';
+    var lines = o.items.map(function (i) {
+      return '<li><span>' + esc(i.name) + ' x ' + i.qty + '</span><b>' + money(i.qty * i.price) + '</b></li>';
+    }).join('');
+    main.innerHTML =
+      '<div class="cart-scroll done"><div class="tick"><i class="fa-solid fa-check"></i></div>' +
+      '<h3 class="co-title">Thank you, ' + esc(o.name) + '</h3>' +
+      '<p class="note">Order <b>#' + esc(o.id) + '</b> &bull; ' + esc(payLabel(o)) + '</p>' +
+      '<ul class="done-lines">' + lines + '<li class="tot"><span>Total</span><b>' + money(o.total) + '</b></li></ul>' +
+      '<p class="note strong">Last step: neeche wale button se order salon ko bhejo, tabhi order confirm hoga.</p></div>' +
+      '<div class="cart-foot"><button type="button" class="btn solid block" data-go="sendOwner">Send order to salon</button>' +
+      '<button type="button" class="btn block" data-go="sendMe">Send receipt to my WhatsApp</button>' +
+      '<button type="button" class="cart-clear" data-go="finish">Close</button></div>';
+  }
+
+  /* ---------- Order helpers ---------- */
+  function payLabel(o) {
+    if (o.method === 'cash') return 'Pay at salon (baaki)';
+    return 'UPI payment' + (o.utr ? ' (UTR ' + o.utr + ')' : '');
+  }
+  function itemLines(o) {
+    return o.items.map(function (i) { return '- ' + i.name + ' x ' + i.qty + ' = ' + money(i.qty * i.price); }).join('\n');
+  }
+  function ownerText(o) {
+    return 'NEW ORDER #' + o.id + '\n' +
+      'Name: ' + o.name + '\nPhone: ' + o.phone + '\nEmail: ' + o.email + '\n\n' + itemLines(o) +
+      '\n\nTotal: ' + money(o.total) + '\nPayment: ' + payLabel(o) +
+      (o.method === 'upi' ? '\n(UPI payment apne app me check karo)' : '');
+  }
+  function clientText(o) {
+    return CONFIG.salonName + '\nOrder receipt #' + o.id + '\n\n' + itemLines(o) +
+      '\n\nTotal: ' + money(o.total) + '\nPayment: ' + payLabel(o) + '\n\nThank you!';
+  }
+  function wa(number, text) {
+    window.open('https://wa.me/' + number + '?text=' + encodeURIComponent(text), '_blank');
+  }
+  function newOrder(name, phone, method) {
+    return {
+      id: 'SH' + String(Date.now()).slice(-6),
+      name: name, phone: phone, method: method, utr: '',
+      email: (window.shalonAuth || {}).email || '', uid: (window.shalonAuth || {}).uid || '',
+      items: cart.map(function (i) { return { id: i.id, name: i.name, price: i.price, qty: i.qty }; }),
+      total: total(), time: new Date().toISOString()
+    };
+  }
+  function finalize(o) {
+    var orders = load(ORDERS_KEY, []); orders.push(o); save(ORDERS_KEY, orders);
+    lastOrder = o; pending = null; cart = []; save(CART_KEY, cart);
+    view = 'done'; render();
+  }
+
+  /* ---------- Cart actions ---------- */
+  function add(p) {
+    var f = cart.filter(function (i) { return i.id === p.id; })[0];
+    if (f) f.qty += 1; else cart.push({ id: p.id, name: p.name, price: p.price, img: p.img, qty: 1 });
+    save(CART_KEY, cart); render();
+    showToast(p.name + ' cart me add ho gaya');
+    fab.classList.remove('bump'); void fab.offsetWidth; fab.classList.add('bump');
+  }
+  function change(id, act) {
+    cart = cart.map(function (i) {
+      if (i.id === id) { if (act === 'inc') i.qty += 1; if (act === 'dec') i.qty -= 1; }
+      return i;
+    }).filter(function (i) { return i.qty > 0 && !(i.id === id && act === 'del'); });
+    save(CART_KEY, cart); render();
+  }
+  function openCart() { panel.classList.add('open'); overlay.classList.add('open'); document.body.style.overflow = 'hidden'; render(); }
+  function closeCart() {
+    panel.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow = '';
+    if (view === 'done') { view = 'cart'; render(); }
+  }
+  var toastTimer;
+  function showToast(msg) {
+    toast.textContent = msg; toast.classList.add('show');
+    clearTimeout(toastTimer); toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 1800);
+  }
+
+  /* ---------- Events ---------- */
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('.add-to-cart');
+    if (!b) return;
+    e.preventDefault();
+    add({ id: b.getAttribute('data-id'), name: b.getAttribute('data-name'),
+          price: Number(b.getAttribute('data-price')) || 0, img: b.getAttribute('data-img') });
+    if (!b.getAttribute('data-label')) b.setAttribute('data-label', b.textContent);
+    b.textContent = 'Added \u2713'; b.classList.add('added');
+    clearTimeout(b._t);
+    b._t = setTimeout(function () { b.textContent = b.getAttribute('data-label'); b.classList.remove('added'); }, 1200);
+  });
+
+  main.addEventListener('click', function (e) {
+    var q = e.target.closest('[data-act]');
+    if (q) { var row = q.closest('.cart-row'); if (row) change(row.getAttribute('data-id'), q.getAttribute('data-act')); return; }
+
+    var g = e.target.closest('[data-go]');
+    if (!g) return;
+    var go = g.getAttribute('data-go');
+
+    if (go === 'checkout') {
+      var au = window.shalonAuth;
+      if (au === undefined) { showToast('Login check ho raha hai, ek second ruko'); return; }
+      if (!au || !au.verified) {
+        showToast(au ? 'Pehle Gmail verify karo' : 'Pehle login ya sign up karo');
+        var here = decodeURIComponent(location.pathname.split('/').pop() || 'index.html');
+        setTimeout(function () { location.href = 'login.html?next=' + encodeURIComponent(here); }, 1000);
+        return;
+      }
+      view = 'checkout'; render();
+    }
+    else if (go === 'back') { view = 'cart'; render(); }
+    else if (go === 'clear') { cart = []; save(CART_KEY, cart); render(); }
+    else if (go === 'pay') {
+      var name = document.getElementById('coName').value.trim();
+      var phone = document.getElementById('coPhone').value.replace(/\D/g, '');
+      var err = document.getElementById('coErr');
+      if (name.length < 2) { err.textContent = 'Apna naam likho.'; return; }
+      if (!/^[6-9]\d{9}$/.test(phone)) { err.textContent = '10 digit ka sahi mobile number daalo.'; return; }
+      save(CUST_KEY, { name: name, phone: phone });
+      var method = main.querySelector('input[name="pm"]:checked').value;
+      var o = newOrder(name, phone, method);
+      if (method === 'cash') { finalize(o); }
+      else { pending = o; view = 'upi'; render(); }
+    }
+    else if (go === 'copy') {
+      try { navigator.clipboard.writeText(CONFIG.upiId).then(function () { showToast('UPI ID copy ho gaya'); }, function () { showToast(CONFIG.upiId); }); }
+      catch (x) { showToast(CONFIG.upiId); }
+    }
+    else if (go === 'paid') {
+      var utr = document.getElementById('coUtr').value.trim();
+      pending.utr = utr; finalize(pending);
+    }
+    else if (go === 'sendOwner') { wa(CONFIG.ownerWhatsapp, ownerText(lastOrder)); }
+    else if (go === 'sendMe') { wa('91' + lastOrder.phone, clientText(lastOrder)); }
+    else if (go === 'finish') { closeCart(); }
+  });
+
+  fab.addEventListener('click', openCart);
+  overlay.addEventListener('click', closeCart);
+  panel.querySelector('.cart-close').addEventListener('click', closeCart);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeCart(); });
+  window.addEventListener('storage', function (e) { if (e.key === CART_KEY) { cart = load(CART_KEY, []); render(); } });
+
+  render();
+})();
+</script>
+
+<!-- FIREBASE: login state (same config as login.html / booking page) -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "xxxx",
+  authDomain: "xxxx.firebaseapp.com",
+  projectId: "xxxx",
+  appId: "xxxx"
+};
+
+onAuthStateChanged(getAuth(initializeApp(firebaseConfig)), (u) => {
+  window.shalonAuth = u ? { uid: u.uid, email: u.email, name: u.displayName || "", verified: u.emailVerified } : null;
+  window.dispatchEvent(new Event("shalon-auth"));
+});
+</script>
+</body>   
+</html>                       
