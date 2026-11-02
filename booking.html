@@ -1,213 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BarberStudio — Online Booking</title>
-    <link rel="stylesheet" href="salon.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Arya:wght@400;700&family=WDXL+Lubrifont+SC&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch+Pop&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BarberStudio — Online Booking</title>
+<link rel="stylesheet" href="salon.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arya:wght@400;700&family=WDXL+Lubrifont+SC&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch+Pop&display=swap" rel="stylesheet">
 
-    <!-- ---------------FIREBASE (Firestore + Login)------------------ -->
-    <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+<!-- FIREBASE (Firestore + Login) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
 
-    <style>
-    /* ===== LOGIN GATE (booking se pehle verified login zaroori) ===== */
-    .auth-gate{position:fixed;inset:0;z-index:5000;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(1,4,10,.97)}
-    .auth-card{width:100%;max-width:340px;text-align:center;border:1px solid rgba(223,177,91,.25);border-radius:18px;background:#030812;padding:26px 20px;color:#e9e1d8;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
-    .auth-icon{width:64px;height:64px;border-radius:50%;border:1px solid #dfb15b;color:#dfb15b;display:grid;place-items:center;font-size:24px;margin:0 auto 14px}
-    .auth-card h2{margin:0 0 8px;font-size:28px;color:#f7e6b0;line-height:1.1}
-    .auth-card p{margin:0 0 18px;font-size:13px;color:#b9ada1;line-height:1.6}
-    .auth-btn{display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:40px;background:#dfb15b;color:#1a0f0a;font-weight:600;font-size:14px;text-decoration:none}
-    .auth-home{display:inline-block;margin-top:14px;font-size:12px;color:#b9ada1;text-decoration:underline}
-    </style>
+<style>
+/* LOGIN GATE */
+.auth-gate{position:fixed;inset:0;z-index:5000;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(1,4,10,.97)}
+.auth-card{width:100%;max-width:340px;text-align:center;border:1px solid rgba(223,177,91,.25);border-radius:18px;background:#030812;padding:26px 20px;color:#e9e1d8;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+.auth-icon{width:64px;height:64px;border-radius:50%;border:1px solid #dfb15b;color:#dfb15b;display:grid;place-items:center;font-size:24px;margin:0 auto 14px}
+.auth-card h2{margin:0 0 8px;font-size:28px;color:#f7e6b0;line-height:1.1}
+.auth-card p{margin:0 0 18px;font-size:13px;color:#b9ada1;line-height:1.6}
+.auth-btn{display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:40px;background:#dfb15b;color:#1a0f0a;font-weight:600;font-size:14px;text-decoration:none}
+.auth-home{display:inline-block;margin-top:14px;font-size:12px;color:#b9ada1;text-decoration:underline}
+</style>
 </head>
 <body>
 
-<!-- ============= LOGIN GATE ============= -->
+<!-- LOGIN GATE -->
 <div class="auth-gate" id="authGate">
-    <div class="auth-card">
-        <div class="auth-icon"><i class="fa-solid fa-lock"></i></div>
-        <h2 id="gateTitle">Check ho raha hai...</h2>
-        <p id="gateText">Ek second ruko, login check ho raha hai.</p>
-        <a href="login.html?next=booking.html" class="auth-btn" id="gateBtn" style="display:none">Login / Sign up</a>
-        <a href="index.html" class="auth-home">Home par jao</a>
-    </div>
+  <div class="auth-card">
+    <div class="auth-icon"><i class="fa-solid fa-lock"></i></div>
+    <h2 id="gateTitle">Check ho raha hai...</h2>
+    <p id="gateText">Ek second ruko, login check ho raha hai.</p>
+    <a href="#" class="auth-btn" id="gateBtn" style="display:none">Login / Sign up</a>
+    <a href="index.html" class="auth-home">Home par jao</a>
+  </div>
 </div>
 
 <div class="mobile-container">
 
-    <!-- == NAVBAR == -->
-    <nav class="nv">
-        <div class="nvmn">
-            <div class="menu-circle">
-                <svg viewBox="0 0 100 100">
-                    <defs><path id="menuPath" d="M50,50 m-36,0 a36,36 0 1,1 72,0 a36,36 0 1,1 -72,0"/></defs>
-                    <text><textPath href="#menuPath">MENUㅤ ㅤ MENU ㅤㅤ MENU </textPath></text>
-                </svg>
-                <i class="fa-solid fa-scissors"></i>
-            </div>
-        </div>
-    </nav>
-
-    <nav class="nvc" id="menuPanel">
-        <a href="#" class="close-btn" id="menuClose">&times;</a>
-        <div class="nvcb"><a href="index.html" class="nvch"><h1 class="nvchh">HOME</h1></a></div>
-        <div class="nvcb"><a href="special.html" class="nvch"><h1 class="nvchh">EXCLUSIVE SERVICE</h1></a></div>
-        <div class="nvcb"><a href="booking.html" class="nvch"><h1 class="nvchh">BOOKING PAGE</h1></a></div>
-        <div class="nvcb"><a href="SALON DETAIL.html" class="nvch"><h1 class="nvchh">About Shalon</h1></a></div>
-        <div class="nvcb"><a href="shop.html" class="nvch"><h1 class="nvchh">SHOP</h1></a></div>
-        <div class="nvcb"><a href="login.html" class="nvch"><h1 class="nvchh">LOGIN</h1></a></div>
-    </nav>
-    <div class="gpn"></div>
-
-    <!-- == BARBER SECTION == -->
-    <h3 class="section-title">Select Barber</h3>
-    <div class="prs">
-        <div class="prsq" data-barber="Barber 1">Barber 1</div>
-        <div class="prsq" data-barber="Barber 2">Barber 2</div>
-        <div class="prsq" data-barber="Barber 3">Barber 3</div>
+  <!-- NAVBAR -->
+  <nav class="nv">
+    <div class="nvmn">
+      <div class="menu-circle">
+        <svg viewBox="0 0 100 100">
+          <defs><path id="menuPath" d="M50,50 m-36,0 a36,36 0 1,1 72,0 a36,36 0 1,1 -72,0"/></defs>
+          <text><textPath href="#menuPath">MENUㅤ ㅤ MENU ㅤㅤ MENU </textPath></text>
+        </svg>
+        <i class="fa-solid fa-scissors"></i>
+      </div>
     </div>
+  </nav>
 
-    <!-- == DATE == -->
-    <h3 class="section-title">Select Date</h3>
-    <div class="date-selector" id="dateSelector"></div>
+  <nav class="nvc" id="menuPanel">
+    <a href="#" class="close-btn" id="menuClose">&times;</a>
+    <div class="nvcb"><a href="index.html" class="nvch"><h1 class="nvchh">HOME</h1></a></div>
+    <div class="nvcb"><a href="special.html" class="nvch"><h1 class="nvchh">EXCLUSIVE SERVICE</h1></a></div>
+    <div class="nvcb"><a href="booking.html" class="nvch"><h1 class="nvchh">BOOKING PAGE</h1></a></div>
+    <div class="nvcb"><a href="SALON DETAIL.html" class="nvch"><h1 class="nvchh">About Shalon</h1></a></div>
+    <div class="nvcb"><a href="shop.html" class="nvch"><h1 class="nvchh">SHOP</h1></a></div>
+    <div class="nvcb"><a href="#" id="menuLogin" class="nvch"><h1 class="nvchh">LOGIN</h1></a></div>
+  </nav>
+  <div class="gpn"></div>
 
-    <!-- == TIME & SLOT == -->
-    <h3 class="section-title">Select Time Slots</h3>
-    <div class="bksc">
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">9:00 - 9:10</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">9:15 - 9:25</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">9:30 - 9:40</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">9:45 - 9:55</h3></div>
+  <!-- BARBER -->
+  <h3 class="section-title">Select Barber</h3>
+  <div class="prs">
+    <div class="prsq" data-barber="Barber 1">Barber 1</div>
+    <div class="prsq" data-barber="Barber 2">Barber 2</div>
+    <div class="prsq" data-barber="Barber 3">Barber 3</div>
+  </div>
 
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">10:00 - 10:10</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">10:15 - 10:25</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">10:30 - 10:40</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">10:45 - 10:55</h3></div>
+  <!-- DATE -->
+  <h3 class="section-title">Select Date</h3>
+  <div class="date-selector" id="dateSelector"></div>
 
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">11:00 - 11:10</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">11:15 - 11:25</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">11:30 - 11:40</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">11:45 - 11:55</h3></div>
+  <!-- TIME SLOTS (JS se 9:00 se 20:45 tak, har 15 min me ek 10 min slot) -->
+  <h3 class="section-title">Select Time Slots</h3>
+  <div class="bksc" id="slotContainer"></div>
 
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">12:00 - 12:10</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">12:15 - 12:25</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">12:30 - 12:40</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">12:45 - 12:55</h3></div>
+  <!-- SUMMARY -->
+  <div class="summary-box">
+    <h3>Booking Summary</h3>
+    <p><strong>Barber:</strong> <span id="sumBarber">Not selected</span></p>
+    <p><strong>Date:</strong> <span id="sumDate">Not selected</span></p>
+    <p><strong>Time Slots:</strong> <span id="sumTime">None</span></p>
+  </div>
 
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">13:00 - 13:10</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">13:15 - 13:25</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">13:30 - 13:40</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">13:45 - 13:55</h3></div>
+  <!-- TOTAL -->
+  <div class="bkcr">
+    <div class="bkch"><h3>Total Amount</h3></div>
+    <button class="bkap" id="openCustomer"><h2 class="bkph" id="bookingAmount">₹ 0 /-</h2></button>
+  </div>
 
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">14:00 - 14:10</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">14:15 - 14:25</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">14:30 - 14:40</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">14:45 - 14:55</h3></div>
-
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">15:00 - 15:10</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">15:15 - 15:25</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">15:30 - 15:40</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">15:45 - 15:55</h3></div>
-
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">16:00 - 16:10</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">16:15 - 16:25</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">16:30 - 16:40</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">16:45 - 16:55</h3></div>
-
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">17:00 - 17:10</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">17:15 - 17:25</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">17:30 - 17:40</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">17:45 - 17:55</h3></div>
-
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">18:00 - 18:10</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">18:15 - 18:25</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">18:30 - 18:40</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">18:45 - 18:55</h3></div>
-
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">19:00 - 19:10</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">19:15 - 19:25</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">19:30 - 19:40</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">19:45 - 19:55</h3></div>
-
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">20:00 - 20:10</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">20:15 - 20:25</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">20:30 - 20:40</h3></div>
-        <div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">20:45 - 20:55</h3></div>
+  <!-- CUSTOMER POPUP -->
+  <div class="customer-popup" id="customerPopup">
+    <div class="customer-box">
+      <button class="customer-close" id="customerClose">&times;</button>
+      <h2 class="customer-title">CUSTOMER DETAILS</h2>
+      <p class="customer-subtitle">Booking ke liye apni jankari bhare</p>
+      <p class="customer-subtitle" id="loggedInAs"></p>
+      <div class="bkif">
+        <input type="text" class="bkifi" id="name" placeholder="Enter your name">
+        <input type="email" class="bkifi" id="email" placeholder="Enter your email" readonly>
+        <input type="tel" class="bkifi" id="mobile" placeholder="Enter your mobile number" maxlength="10">
+        <button class="bkbtn" id="confirmBookingBtn"><h3>CONFIRM BOOKING</h3></button>
+      </div>
     </div>
-
-    <!-- == SUMMARY PREVIEW BOX == -->
-    <div class="summary-box">
-        <h3>Booking Summary</h3>
-        <p><strong>Barber:</strong> <span id="sumBarber">Not selected</span></p>
-        <p><strong>Date:</strong> <span id="sumDate">Not selected</span></p>
-        <p><strong>Time Slots:</strong> <span id="sumTime">None</span></p>
-    </div>
-
-    <!-- == BOOKING SECTION == -->
-    <div class="bkcr">
-        <div class="bkch"><h3>Total Amount</h3></div>
-        <button class="bkap" id="openCustomer">
-            <h2 class="bkph" id="bookingAmount">₹ 0 /-</h2>
-        </button>
-    </div>
-
-    <!-- ============= CUSTOMER FORM DETAILS POPUP ================ -->
-    <div class="customer-popup" id="customerPopup">
-        <div class="customer-box">
-            <button class="customer-close" id="customerClose">&times;</button>
-            <h2 class="customer-title">CUSTOMER DETAILS</h2>
-            <p class="customer-subtitle">Booking ke liye apni jankari bhare</p>
-            <p class="customer-subtitle" id="loggedInAs"></p>
-            <div class="bkif">
-                <input type="text" class="bkifi" id="name" placeholder="Enter your name">
-                <input type="email" class="bkifi" id="email" placeholder="Enter your email" readonly>
-                <input type="tel" class="bkifi" id="mobile" placeholder="Enter your mobile number" maxlength="10">
-                <button class="bkbtn" id="confirmBookingBtn"><h3>CONFIRM BOOKING</h3></button>
-            </div>
-        </div>
-    </div>
+  </div>
 </div>
 
 <script>
 "use strict";
 
-/* =========================================================
-   FIREBASE CONFIG
-   (Project settings me jo Project ID hai wahi yahan hona chahiye)
-========================================================= */
-
+/* ================= FIREBASE CONFIG ================= */
 const firebaseConfig = {
-    apiKey: "AIzaSyDJwlPt6yY3eCc7I5UyHV7p-APnICkuCeQ",
-    authDomain: "barberstudio-389f0.firebaseapp.com",
-    projectId: "barberstudio-389f0",
-    storageBucket: "barberstudio-389f0.firebasestorage.app",
-    messagingSenderId: "69089290514",
-    appId: "1:69089290514:web:ab604123e76c4eb24cabcb",
-    measurementId: "G-ZBDB0XWN7K"
+  apiKey: "AIzaSyDJwlPt6yY3eCc7I5UyHV7p-APnICkuCeQ",
+  authDomain: "barberstudio-389f0.firebaseapp.com",
+  projectId: "barberstudio-389f0",
+  storageBucket: "barberstudio-389f0.firebasestorage.app",
+  messagingSenderId: "69089290514",
+  appId: "1:69089290514:web:ab604123e76c4eb24cabcb",
+  measurementId: "G-ZBDB0XWN7K"
 };
-
 firebase.initializeApp(firebaseConfig);
-
 const db = firebase.firestore();
 const auth = firebase.auth();
 
+/* ================= LOGIN PAGE LINK ================= */
+/* GitHub Pages link (github.com/.../blob/... wala link kaam nahi karta) */
+const LOGIN_URL = "https://ofhrshu92388-ux.github.io/Salon.web/salon%20login.html";
+/* login ke baad wapas yahin aane ke liye ?next= bhejte hain */
+function getLoginLink() {
+  return LOGIN_URL + "?next=" + encodeURIComponent(location.href);
+}
 
-/* =========================================================
-   GLOBAL VARIABLES
-========================================================= */
-
+/* ================= GLOBALS ================= */
 let selectedDate = null;
 let selectedBarber = null;
-let currentUser = null;      // sirf verified login wala user
-
+let currentUser = null;           // sirf verified login wala user
 const PRICE_PER_SLOT = 20;
 
 const sumBarber = document.getElementById("sumBarber");
@@ -215,785 +150,384 @@ const sumDate = document.getElementById("sumDate");
 const sumTime = document.getElementById("sumTime");
 const bookingAmountElem = document.getElementById("bookingAmount");
 
+/* ================= CREATE TIME SLOTS ================= */
+(function createSlots() {
+  const box = document.getElementById("slotContainer");
+  let html = "";
+  for (let h = 9; h <= 20; h++) {
+    for (let m = 0; m < 60; m += 15) {
+      const start = h + ":" + String(m).padStart(2, "0");
+      const end = h + ":" + String(m + 10).padStart(2, "0");
+      html += `<div class="bks"><p class="bkp">AVAILABLE</p><h3 class="bkth">${start} - ${end}</h3></div>`;
+    }
+  }
+  box.innerHTML = html;
+})();
 
-/* =========================================================
-   LOGIN GATE (verified Gmail ke bina booking nahi)
-========================================================= */
-
+/* ================= LOGIN GATE ================= */
 const authGate = document.getElementById("authGate");
 const gateTitle = document.getElementById("gateTitle");
 const gateText = document.getElementById("gateText");
 const gateBtn = document.getElementById("gateBtn");
+const menuLogin = document.getElementById("menuLogin");
 let authReady = false;
 
+/* menu ka LOGIN link bhi usi page par */
+menuLogin.href = getLoginLink();
+
 function showGate(kind) {
-    authGate.style.display = "flex";
-    if (kind === "verify") {
-        gateTitle.textContent = "Gmail verify karo";
-        gateText.textContent = "Booking se pehle apna Gmail verify karna zaroori hai.";
-        gateBtn.textContent = "Verify karo";
-    } else {
-        gateTitle.textContent = "Pehle login karo";
-        gateText.textContent = "Booking ke liye Gmail se login aur verify karna zaroori hai.";
-        gateBtn.textContent = "Login / Sign up";
-    }
-    gateBtn.style.display = "flex";
+  authGate.style.display = "flex";
+  if (kind === "verify") {
+    gateTitle.textContent = "Gmail verify karo";
+    gateText.textContent = "Booking se pehle apna Gmail verify karna zaroori hai.";
+    gateBtn.textContent = "Verify karo";
+  } else {
+    gateTitle.textContent = "Pehle login karo";
+    gateText.textContent = "Booking ke liye Gmail se login aur verify karna zaroori hai.";
+    gateBtn.textContent = "Login / Sign up";
+  }
+  gateBtn.href = getLoginLink();     // <-- aapke login page ka link
+  gateBtn.style.display = "flex";
 }
 
 function hideGate() {
-    authGate.style.display = "none";
+  authGate.style.display = "none";
 }
 
 function fillCustomerFields() {
-    if (!currentUser) return;
+  if (!currentUser) return;
+  let saved = {};
+  try { saved = JSON.parse(localStorage.getItem("shalonCustomer")) || {}; } catch (e) {}
 
-    let saved = {};
-    try { saved = JSON.parse(localStorage.getItem("shalonCustomer")) || {}; } catch (e) {}
+  const nameEl = document.getElementById("name");
+  const emailEl = document.getElementById("email");
+  const mobileEl = document.getElementById("mobile");
 
-    const nameEl = document.getElementById("name");
-    const emailEl = document.getElementById("email");
-    const mobileEl = document.getElementById("mobile");
+  if (!nameEl.value) nameEl.value = saved.name || currentUser.displayName || "";
+  if (!mobileEl.value) mobileEl.value = saved.phone || "";
 
-    if (!nameEl.value) nameEl.value = saved.name || currentUser.displayName || "";
-    if (!mobileEl.value) mobileEl.value = saved.phone || "";
+  emailEl.value = currentUser.email;
+  emailEl.readOnly = true;
 
-    emailEl.value = currentUser.email;     // login wala email hi use hoga
-    emailEl.readOnly = true;
-
-    document.getElementById("loggedInAs").textContent =
-        "Login: " + currentUser.email + " (verified)";
+  document.getElementById("loggedInAs").textContent =
+    "Login: " + currentUser.email + " (verified)";
 }
 
 auth.onAuthStateChanged(async (user) => {
+  authReady = true;
 
-    authReady = true;
+  if (!user) {
+    currentUser = null;
+    showGate("login");
+    return;
+  }
 
-    if (!user) {
-        currentUser = null;
-        showGate("login");
-        return;
-    }
+  try { await user.reload(); } catch (e) { /* offline: purani state use hogi */ }
 
-    try { await user.reload(); } catch (e) { /* offline: purani state use hogi */ }
+  const fresh = auth.currentUser;
+  if (!fresh || !fresh.emailVerified) {
+    currentUser = null;
+    showGate("verify");
+    return;
+  }
 
-    const fresh = auth.currentUser;
+  currentUser = fresh;
+  hideGate();
+  fillCustomerFields();
 
-    if (!fresh || !fresh.emailVerified) {
-        currentUser = null;
-        showGate("verify");
-        return;
-    }
-
-    currentUser = fresh;
-    hideGate();
-    fillCustomerFields();
-
-    if (selectedBarber && selectedDate) {
-        loadBookedSlots();
-    }
-
+  if (selectedBarber && selectedDate) loadBookedSlots();
 });
 
 setTimeout(() => {
-    if (!authReady) {
-        gateText.textContent = "Internet ya Firebase connection check karo, phir page refresh karo.";
-    }
+  if (!authReady) {
+    gateText.textContent = "Internet ya Firebase connection check karo, phir page refresh karo.";
+  }
 }, 8000);
 
-
-/* =========================================================
-   MENU
-========================================================= */
-
+/* ================= MENU ================= */
 const menuButton = document.querySelector(".nvmn");
 const menuPanel = document.getElementById("menuPanel");
 const menuClose = document.getElementById("menuClose");
 
 if (menuButton && menuPanel) {
-    menuButton.addEventListener("click", () => {
-        menuPanel.classList.add("active");
-    });
+  menuButton.addEventListener("click", () => menuPanel.classList.add("active"));
 }
-
 if (menuClose && menuPanel) {
-    menuClose.addEventListener("click", (e) => {
-        e.preventDefault();
-        menuPanel.classList.remove("active");
-    });
+  menuClose.addEventListener("click", (e) => {
+    e.preventDefault();
+    menuPanel.classList.remove("active");
+  });
 }
 
-
-/* =========================================================
-   BARBER SELECTION
-========================================================= */
-
+/* ================= BARBER SELECTION ================= */
 const barberBoxes = document.querySelectorAll(".prsq");
 
 barberBoxes.forEach((box) => {
+  box.addEventListener("click", async () => {
+    barberBoxes.forEach(item => item.classList.remove("active"));
+    box.classList.add("active");
 
-    box.addEventListener("click", async () => {
+    selectedBarber = box.dataset.barber || "Barber";
+    if (sumBarber) sumBarber.textContent = selectedBarber;
 
-        barberBoxes.forEach(item =>
-            item.classList.remove("active")
-        );
-
-        box.classList.add("active");
-
-        selectedBarber = box.dataset.barber || "Barber";
-
-        if (sumBarber) {
-            sumBarber.textContent = selectedBarber;
-        }
-
-        clearSelectedSlots();
-
-        if (selectedDate) {
-            await loadBookedSlots();
-        }
-
-    });
-
+    clearSelectedSlots();
+    if (selectedDate) await loadBookedSlots();
+  });
 });
 
-
-/* =========================================================
-   DATE SELECTOR
-========================================================= */
-
+/* ================= DATE SELECTOR ================= */
 function createDateSelector(today) {
+  const dateSelector = document.getElementById("dateSelector");
+  if (!dateSelector) return;
+  dateSelector.innerHTML = "";
 
-    const dateSelector = document.getElementById("dateSelector");
+  for (let i = 0; i < 6; i++) {
+    const date = new Date(today);
+    date.setDate(today.getDate() + i);
 
-    if (!dateSelector) return;
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const fullDate = `${year}-${month}-${day}`;
 
-    dateSelector.innerHTML = "";
+    let dayLabel;
+    if (i === 0) dayLabel = "TODAY";
+    else if (i === 1) dayLabel = "TOMORROW";
+    else dayLabel = date.toLocaleDateString("en-IN", { weekday: "short" }).toUpperCase();
 
-    for (let i = 0; i < 6; i++) {
+    const dateBox = document.createElement("div");
+    dateBox.classList.add("date-box");
+    dateBox.dataset.date = fullDate;
+    dateBox.innerHTML = `
+      <div class="day">${dayLabel}</div>
+      <div class="date">${date.getDate()}</div>
+      <div class="month">${date.toLocaleDateString("en-IN", { month: "short" }).toUpperCase()}</div>
+    `;
 
-        const date = new Date(today);
+    dateBox.addEventListener("click", async () => {
+      document.querySelectorAll(".date-box").forEach(b => b.classList.remove("active"));
+      dateBox.classList.add("active");
 
-        date.setDate(today.getDate() + i);
+      selectedDate = fullDate;
+      if (sumDate) sumDate.textContent = fullDate;
 
-        const year = date.getFullYear();
+      clearSelectedSlots();
+      await loadBookedSlots();
+    });
 
-        const month =
-            String(date.getMonth() + 1).padStart(2, "0");
-
-        const day =
-            String(date.getDate()).padStart(2, "0");
-
-        const fullDate =
-            `${year}-${month}-${day}`;
-
-        let dayLabel;
-
-        if (i === 0) {
-            dayLabel = "TODAY";
-        }
-        else if (i === 1) {
-            dayLabel = "TOMORROW";
-        }
-        else {
-            dayLabel =
-                date.toLocaleDateString(
-                    "en-IN",
-                    { weekday: "short" }
-                ).toUpperCase();
-        }
-
-        const dateBox =
-            document.createElement("div");
-
-        dateBox.classList.add("date-box");
-
-        dateBox.dataset.date = fullDate;
-
-        dateBox.innerHTML = `
-            <div class="day">${dayLabel}</div>
-            <div class="date">${date.getDate()}</div>
-            <div class="month">
-                ${date.toLocaleDateString(
-                    "en-IN",
-                    { month: "short" }
-                ).toUpperCase()}
-            </div>
-        `;
-
-        dateBox.addEventListener("click", async () => {
-
-            document
-                .querySelectorAll(".date-box")
-                .forEach(box =>
-                    box.classList.remove("active")
-                );
-
-            dateBox.classList.add("active");
-
-            selectedDate = fullDate;
-
-            if (sumDate) {
-                sumDate.textContent = fullDate;
-            }
-
-            clearSelectedSlots();
-
-            await loadBookedSlots();
-
-        });
-
-        dateSelector.appendChild(dateBox);
-    }
+    dateSelector.appendChild(dateBox);
+  }
 }
-
-
-/* =========================================================
-   CREATE DATES
-========================================================= */
-
 createDateSelector(new Date());
 
-
-/* =========================================================
-   TIME SLOTS
-========================================================= */
-
-const bookingSlots =
-    document.querySelectorAll(".bks");
-
+/* ================= TIME SLOTS ================= */
+const bookingSlots = document.querySelectorAll(".bks");
 
 function getSelectedSlotTimes() {
-
-    const times = [];
-
-    document
-        .querySelectorAll(".bks.active")
-        .forEach(slot => {
-
-            const timeText =
-                slot.querySelector(".bkth");
-
-            if (timeText) {
-                times.push(
-                    timeText.textContent.trim()
-                );
-            }
-
-        });
-
-    return times;
+  const times = [];
+  document.querySelectorAll(".bks.active").forEach(slot => {
+    const t = slot.querySelector(".bkth");
+    if (t) times.push(t.textContent.trim());
+  });
+  return times;
 }
-
 
 function updateBookingSummary() {
+  const slotTimes = getSelectedSlotTimes();
+  const totalPrice = slotTimes.length * PRICE_PER_SLOT;
 
-    const slotTimes =
-        getSelectedSlotTimes();
-
-    const totalPrice =
-        slotTimes.length * PRICE_PER_SLOT;
-
-    if (bookingAmountElem) {
-        bookingAmountElem.textContent =
-            `₹ ${totalPrice} /-`;
-    }
-
-    if (sumTime) {
-        sumTime.textContent =
-            slotTimes.length > 0
-                ? slotTimes.join(", ")
-                : "None";
-    }
+  if (bookingAmountElem) bookingAmountElem.textContent = `₹ ${totalPrice} /-`;
+  if (sumTime) sumTime.textContent = slotTimes.length > 0 ? slotTimes.join(", ") : "None";
 }
-
 
 bookingSlots.forEach(box => {
-
-    box.addEventListener("click", () => {
-
-        if (box.classList.contains("booked")) {
-            return;
-        }
-
-        box.classList.toggle("active");
-
-        updateBookingSummary();
-
-    });
-
+  box.addEventListener("click", () => {
+    if (box.classList.contains("booked")) return;
+    box.classList.toggle("active");
+    updateBookingSummary();
+  });
 });
 
-
-/* =========================================================
-   CLEAR SELECTED SLOTS
-========================================================= */
-
 function clearSelectedSlots() {
-
-    document
-        .querySelectorAll(".bks.active")
-        .forEach(slot => {
-
-            slot.classList.remove("active");
-
-        });
-
-    updateBookingSummary();
+  document.querySelectorAll(".bks.active").forEach(s => s.classList.remove("active"));
+  updateBookingSummary();
 }
-
-
-/* =========================================================
-   RESET SLOT UI
-========================================================= */
 
 function resetSlotAvailabilityUI() {
-
-    document
-        .querySelectorAll(".bks")
-        .forEach(slot => {
-
-            slot.classList.remove("booked");
-
-            const pTag =
-                slot.querySelector(".bkp");
-
-            if (pTag) {
-                pTag.textContent = "AVAILABLE";
-            }
-
-        });
-
+  document.querySelectorAll(".bks").forEach(slot => {
+    slot.classList.remove("booked");
+    const p = slot.querySelector(".bkp");
+    if (p) p.textContent = "AVAILABLE";
+  });
 }
 
-
-/* =========================================================
-   FIREBASE DOCUMENT ID
-========================================================= */
-
+/* ================= FIREBASE DOCUMENT ID ================= */
 function getSlotDocumentId() {
-
-    if (!selectedBarber || !selectedDate) {
-        return null;
-    }
-
-    const barberId =
-        selectedBarber
-            .toLowerCase()
-            .replace(/\s+/g, "-");
-
-    return `${barberId}_${selectedDate}`;
+  if (!selectedBarber || !selectedDate) return null;
+  const barberId = selectedBarber.toLowerCase().replace(/\s+/g, "-");
+  return `${barberId}_${selectedDate}`;
 }
 
-
-/* =========================================================
-   LOAD BOOKED SLOTS FROM FIREBASE
-========================================================= */
-
+/* ================= LOAD BOOKED SLOTS ================= */
 async function loadBookedSlots() {
+  if (!selectedBarber || !selectedDate) return;
 
-    if (!selectedBarber || !selectedDate) {
-        return;
-    }
+  resetSlotAvailabilityUI();
 
-    resetSlotAvailabilityUI();
+  if (!currentUser) return;      // login ke baad hi slots padhe jaayenge
 
-    if (!currentUser) {
-        return;     // login ke baad hi slots padhe jaayenge
-    }
+  const documentId = getSlotDocumentId();
+  if (!documentId) return;
 
-    const documentId =
-        getSlotDocumentId();
+  try {
+    const docSnap = await db.collection("slots").doc(documentId).get();
+    if (!docSnap.exists) return;
 
-    if (!documentId) return;
+    const data = docSnap.data();
+    const bookedSlots = Array.isArray(data.booked) ? data.booked : [];
 
-    try {
+    document.querySelectorAll(".bks").forEach(slot => {
+      const timeElement = slot.querySelector(".bkth");
+      if (!timeElement) return;
 
-        const docRef =
-            db.collection("slots")
-              .doc(documentId);
-
-        const docSnap =
-            await docRef.get();
-
-        if (!docSnap.exists) {
-            return;
-        }
-
-        const data =
-            docSnap.data();
-
-        const bookedSlots =
-            Array.isArray(data.booked)
-                ? data.booked
-                : [];
-
-        document
-            .querySelectorAll(".bks")
-            .forEach(slot => {
-
-                const timeElement =
-                    slot.querySelector(".bkth");
-
-                if (!timeElement) return;
-
-                const time =
-                    timeElement.textContent.trim();
-
-                if (bookedSlots.includes(time)) {
-
-                    slot.classList.remove("active");
-
-                    slot.classList.add("booked");
-
-                    const pTag =
-                        slot.querySelector(".bkp");
-
-                    if (pTag) {
-                        pTag.textContent =
-                            "NOT AVAILABLE";
-                    }
-
-                }
-
-            });
-
-        updateBookingSummary();
-
-    }
-    catch (error) {
-
-        console.error(
-            "Firebase slot loading error:",
-            error
-        );
-
-        alert(
-            error && error.code === "permission-denied"
-                ? "Slots dekhne ke liye verified login chahiye. Dobara login karo."
-                : "Slots load nahi ho paaye. Internet connection check karein."
-        );
-
-    }
-}
-
-
-/* =========================================================
-   CUSTOMER POPUP
-========================================================= */
-
-const openCustomer =
-    document.getElementById("openCustomer");
-
-const customerPopup =
-    document.getElementById("customerPopup");
-
-const customerClose =
-    document.getElementById("customerClose");
-
-
-function closeCustomerPopup() {
-
-    if (customerPopup) {
-
-        customerPopup.style.display =
-            "none";
-
-        document.body.style.overflow =
-            "";
-
-    }
-
-}
-
-
-if (openCustomer && customerPopup) {
-
-    openCustomer.addEventListener("click", () => {
-
-        if (!currentUser) {
-
-            showGate("login");
-
-            return;
-        }
-
-        if (!selectedBarber) {
-
-            alert(
-                "Kripya sabse pehle Barber select karein."
-            );
-
-            return;
-        }
-
-        if (!selectedDate) {
-
-            alert(
-                "Kripya sabse pehle Date select karein."
-            );
-
-            return;
-        }
-
-        if (getSelectedSlotTimes().length === 0) {
-
-            alert(
-                "Kripya kam se kam ek Time Slot select karein."
-            );
-
-            return;
-        }
-
-        fillCustomerFields();
-
-        customerPopup.style.display =
-            "flex";
-
-        document.body.style.overflow =
-            "hidden";
-
+      if (bookedSlots.includes(timeElement.textContent.trim())) {
+        slot.classList.remove("active");
+        slot.classList.add("booked");
+        const p = slot.querySelector(".bkp");
+        if (p) p.textContent = "NOT AVAILABLE";
+      }
     });
 
-}
-
-
-if (customerClose) {
-
-    customerClose.addEventListener(
-        "click",
-        closeCustomerPopup
+    updateBookingSummary();
+  } catch (error) {
+    console.error("Firebase slot loading error:", error);
+    alert(
+      error && error.code === "permission-denied"
+        ? "Slots dekhne ke liye verified login chahiye. Dobara login karo."
+        : "Slots load nahi ho paaye. Internet connection check karein."
     );
-
+  }
 }
 
+/* ================= CUSTOMER POPUP ================= */
+const openCustomer = document.getElementById("openCustomer");
+const customerPopup = document.getElementById("customerPopup");
+const customerClose = document.getElementById("customerClose");
 
-/* =========================================================
-   SAVE BOOKING TO FIREBASE
-========================================================= */
+function closeCustomerPopup() {
+  if (customerPopup) {
+    customerPopup.style.display = "none";
+    document.body.style.overflow = "";
+  }
+}
 
-async function saveBookingToFirebase(
-    name,
-    email,
-    mobile,
-    slotTimes,
-    totalPrice
-) {
-
-    const slotDocumentId =
-        getSlotDocumentId();
-
-    if (!slotDocumentId) {
-
-        throw new Error(
-            "Barber ya Date missing hai."
-        );
-
+if (openCustomer && customerPopup) {
+  openCustomer.addEventListener("click", () => {
+    if (!currentUser) { showGate("login"); return; }
+    if (!selectedBarber) { alert("Kripya sabse pehle Barber select karein."); return; }
+    if (!selectedDate) { alert("Kripya sabse pehle Date select karein."); return; }
+    if (getSelectedSlotTimes().length === 0) {
+      alert("Kripya kam se kam ek Time Slot select karein.");
+      return;
     }
 
-    if (!currentUser) {
-
-        throw new Error(
-            "Pehle login karo."
-        );
-
-    }
-
-    /* naya token, taaki email_verified Firestore rules tak pahunche */
-    await currentUser.getIdToken(true);
-
-    const slotRef =
-        db.collection("slots")
-          .doc(slotDocumentId);
-
-    const bookingRef =
-        db.collection("bookings")
-          .doc();
-
-    return db.runTransaction(
-        async transaction => {
-
-            const slotSnap =
-                await transaction.get(slotRef);
-
-            let bookedSlots = [];
-
-            if (slotSnap.exists) {
-
-                const data =
-                    slotSnap.data();
-
-                if (Array.isArray(data.booked)) {
-                    bookedSlots = data.booked;
-                }
-
-            }
-
-            /* DOUBLE BOOKING CHECK */
-
-            const alreadyBooked =
-                slotTimes.filter(time =>
-                    bookedSlots.includes(time)
-                );
-
-            if (alreadyBooked.length > 0) {
-
-                throw new Error(
-                    `Ye slot already booked hai: ${alreadyBooked.join(", ")}`
-                );
-
-            }
-
-
-            /* ADD NEW SLOTS */
-
-            const updatedBookedSlots =
-                [
-                    ...new Set([
-                        ...bookedSlots,
-                        ...slotTimes
-                    ])
-                ];
-
-
-            /* LIMIT */
-
-            if (updatedBookedSlots.length > 48) {
-
-                throw new Error(
-                    "Is date ke liye booking limit full ho gayi hai."
-                );
-
-            }
-
-
-            /* SAVE SLOT */
-
-            transaction.set(
-                slotRef,
-                {
-                    booked: updatedBookedSlots
-                },
-                {
-                    merge: true
-                }
-            );
-
-
-            /* SAVE BOOKING */
-
-            transaction.set(
-                bookingRef,
-                {
-                    uid: currentUser.uid,
-                    name: name,
-                    email: email,
-                    mobile: mobile,
-                    barber: selectedBarber,
-                    date: selectedDate,
-                    timeSlots: slotTimes,
-                    totalAmount: totalPrice,
-                    createdAt:
-                        firebase.firestore
-                            .FieldValue
-                            .serverTimestamp()
-                }
-            );
-
-        }
-    );
-
+    fillCustomerFields();
+    customerPopup.style.display = "flex";
+    document.body.style.overflow = "hidden";
+  });
 }
 
+if (customerClose) customerClose.addEventListener("click", closeCustomerPopup);
 
-/* =========================================================
-   CONFIRM BOOKING
-========================================================= */
+/* ================= SAVE BOOKING ================= */
+async function saveBookingToFirebase(name, email, mobile, slotTimes, totalPrice) {
+  const slotDocumentId = getSlotDocumentId();
+  if (!slotDocumentId) throw new Error("Barber ya Date missing hai.");
+  if (!currentUser) throw new Error("Pehle login karo.");
 
-const confirmBookingBtn =
-    document.getElementById(
-        "confirmBookingBtn"
-    );
+  /* naya token, taaki email_verified Firestore rules tak pahunche */
+  await currentUser.getIdToken(true);
 
+  const slotRef = db.collection("slots").doc(slotDocumentId);
+  const bookingRef = db.collection("bookings").doc();
+
+  return db.runTransaction(async transaction => {
+    const slotSnap = await transaction.get(slotRef);
+
+    let bookedSlots = [];
+    if (slotSnap.exists) {
+      const data = slotSnap.data();
+      if (Array.isArray(data.booked)) bookedSlots = data.booked;
+    }
+
+    /* DOUBLE BOOKING CHECK */
+    const alreadyBooked = slotTimes.filter(t => bookedSlots.includes(t));
+    if (alreadyBooked.length > 0) {
+      throw new Error(`Ye slot already booked hai: ${alreadyBooked.join(", ")}`);
+    }
+
+    const updatedBookedSlots = [...new Set([...bookedSlots, ...slotTimes])];
+
+    /* LIMIT */
+    if (updatedBookedSlots.length > 48) {
+      throw new Error("Is date ke liye booking limit full ho gayi hai.");
+    }
+
+    transaction.set(slotRef, { booked: updatedBookedSlots }, { merge: true });
+
+    transaction.set(bookingRef, {
+      uid: currentUser.uid,
+      name: name,
+      email: email,
+      mobile: mobile,
+      barber: selectedBarber,
+      date: selectedDate,
+      timeSlots: slotTimes,
+      totalAmount: totalPrice,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+  });
+}
+
+/* ================= CONFIRM BOOKING ================= */
+const confirmBookingBtn = document.getElementById("confirmBookingBtn");
 
 if (confirmBookingBtn) {
+  confirmBookingBtn.addEventListener("click", async () => {
 
-    confirmBookingBtn.addEventListener(
-        "click",
-        async () => {
+    if (!currentUser) { showGate("login"); return; }
 
-            if (!currentUser) {
-                showGate("login");
-                return;
-            }
+    const name = document.getElementById("name").value.trim();
+    const email = currentUser.email;
+    const mobile = document.getElementById("mobile").value.trim();
 
-            const name = document.getElementById("name").value.trim();
-            const email = currentUser.email;     // login wala verified email
-            const mobile = document.getElementById("mobile").value.trim();
+    /* VALIDATION */
+    if (!name || !mobile) { alert("Please fill all customer details."); return; }
+    if (!/^[0-9]{10}$/.test(mobile)) {
+      alert("Please enter a valid 10-digit mobile number.");
+      return;
+    }
 
+    const slotTimes = getSelectedSlotTimes();
+    if (slotTimes.length === 0) {
+      alert("Kripya kam se kam ek Time Slot select karein.");
+      return;
+    }
 
-            /* VALIDATION */
+    const totalPrice = slotTimes.length * PRICE_PER_SLOT;
 
-            if (!name || !mobile) {
-                alert("Please fill all customer details.");
-                return;
-            }
+    confirmBookingBtn.disabled = true;
+    confirmBookingBtn.style.opacity = "0.6";
 
-            if (!/^[0-9]{10}$/.test(mobile)) {
-                alert("Please enter a valid 10-digit mobile number.");
-                return;
-            }
+    try {
+      await saveBookingToFirebase(name, email, mobile, slotTimes, totalPrice);
 
+      try {
+        localStorage.setItem("shalonCustomer", JSON.stringify({ name: name, phone: mobile }));
+      } catch (e) {}
 
-            const slotTimes =
-                getSelectedSlotTimes();
-
-
-            if (slotTimes.length === 0) {
-
-                alert(
-                    "Kripya kam se kam ek Time Slot select karein."
-                );
-
-                return;
-            }
-
-
-            const totalPrice =
-                slotTimes.length *
-                PRICE_PER_SLOT;
-
-
-            /* BUTTON DISABLE */
-
-            confirmBookingBtn.disabled =
-                true;
-
-            confirmBookingBtn.style.opacity =
-                "0.6";
-
-
-            try {
-
-                /* FIREBASE SAVE */
-
-                await saveBookingToFirebase(
-                    name,
-                    email,
-                    mobile,
-                    slotTimes,
-                    totalPrice
-                );
-
-                try {
-                    localStorage.setItem(
-                        "shalonCustomer",
-                        JSON.stringify({ name: name, phone: mobile })
-                    );
-                } catch (e) {}
-
-
-                /* WHATSAPP MESSAGE */
-
-                const message = `
+      /* MESSAGE */
+      const message = `
 🎉 *BOOKING CONFIRMATION*
 
 👤 Name: ${name}
@@ -1013,118 +547,49 @@ if (confirmBookingBtn) {
 ✅ Booking confirmed successfully.
 
 Thank you for booking with us ❤️
-                `.trim();
+      `.trim();
 
+      /* WHATSAPP */
+      window.open(`https://wa.me/91${mobile}?text=${encodeURIComponent(message)}`, "_blank");
 
-                /* CUSTOMER WHATSAPP */
+      /* EMAIL */
+      const mailtoLink =
+        `mailto:${email}?subject=${encodeURIComponent("Booking Confirmation - BarberStudio")}&body=${encodeURIComponent(message)}`;
+      window.open(mailtoLink, "_blank");
 
-                window.open(
-                    `https://wa.me/91${mobile}?text=${encodeURIComponent(message)}`,
-                    "_blank"
-                );
+      /* UPDATE UI */
+      document.querySelectorAll(".bks.active").forEach(slot => {
+        slot.classList.remove("active");
+        slot.classList.add("booked");
+        const p = slot.querySelector(".bkp");
+        if (p) p.textContent = "NOT AVAILABLE";
+      });
 
+      closeCustomerPopup();
 
-                /* EMAIL */
+      if (bookingAmountElem) bookingAmountElem.textContent = "₹ 0 /-";
+      if (sumTime) sumTime.textContent = "None";
 
-                const mailtoLink =
-                    `mailto:${email}?subject=${
-                        encodeURIComponent(
-                            "Booking Confirmation - BarberStudio"
-                        )
-                    }&body=${
-                        encodeURIComponent(message)
-                    }`;
+      document.getElementById("name").value = "";
+      document.getElementById("mobile").value = "";
+      fillCustomerFields();
 
-                window.open(
-                    mailtoLink,
-                    "_blank"
-                );
-
-
-                /* UPDATE UI */
-
-                document
-                    .querySelectorAll(".bks.active")
-                    .forEach(slot => {
-
-                        slot.classList.remove(
-                            "active"
-                        );
-
-                        slot.classList.add(
-                            "booked"
-                        );
-
-                        const pTag =
-                            slot.querySelector(".bkp");
-
-                        if (pTag) {
-                            pTag.textContent =
-                                "NOT AVAILABLE";
-                        }
-
-                    });
-
-
-                closeCustomerPopup();
-
-
-                if (bookingAmountElem) {
-
-                    bookingAmountElem.textContent =
-                        "₹ 0 /-";
-
-                }
-
-                if (sumTime) {
-
-                    sumTime.textContent =
-                        "None";
-
-                }
-
-
-                document.getElementById("name").value = "";
-                document.getElementById("mobile").value = "";
-
-                fillCustomerFields();
-
-
-                alert(
-                    "Booking Confirmed Successfully! 🎉"
-                );
-
-            }
-            catch (error) {
-
-                console.error(
-                    "BOOKING ERROR:",
-                    error
-                );
-
-
-                alert(
-                    error && error.code === "permission-denied"
-                        ? "Booking nahi ho paayi. Gmail verified hai ya nahi check karo, ya dobara login karo."
-                        : (error.message || "Booking save nahi ho paayi.")
-                );
-
-            }
-            finally {
-
-                confirmBookingBtn.disabled =
-                    false;
-
-                confirmBookingBtn.style.opacity =
-                    "1";
-
-            }
-
-        }
-    );
-
+      alert("Booking Confirmed Successfully! 🎉");
+    }
+    catch (error) {
+      console.error("BOOKING ERROR:", error);
+      alert(
+        error && error.code === "permission-denied"
+          ? "Booking nahi ho paayi. Gmail verified hai ya nahi check karo, ya dobara login karo."
+          : (error.message || "Booking save nahi ho paayi.")
+      );
+    }
+    finally {
+      confirmBookingBtn.disabled = false;
+      confirmBookingBtn.style.opacity = "1";
+    }
+  });
 }
-
 </script>
 </body>
 </html>
