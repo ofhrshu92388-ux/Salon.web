@@ -477,8 +477,9 @@ section,.footer{padding-left:20px;padding-right:20px}
   var hasDrawnAny = false;
   var ticking = false;
 
+  // Frames ab main folder me hain (index.html ke saath), isliye folder ka naam hata diya
   function getFramePath(i){
-    return 'gemini_generated_video_cc4975bd_frames/frame_' + String(i).padStart(3,'0') + '.jpg';
+    return 'frame_' + String(i).padStart(3,'0') + '.jpg';
   }
 
   function updateDebugBadge(frameNum){
