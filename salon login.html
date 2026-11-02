@@ -3,172 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login | Shalon</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="salon.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Yesteryear&display=swap" rel="stylesheet">
+<title>BarberStudio — Login</title>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
 <style>
-:root{
-  --bg:#01040a; --bg2:#030812; --gold:#dfb15b; --cream:#f7e6b0;
-  --text:#e9e1d8; --muted:#b9ada1; --line:rgba(223,177,91,.25);
-}
 *{box-sizing:border-box}
-html,body{overflow-x:clip}
-body{margin:0 auto;max-width:420px;width:100%;min-height:100vh;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
-a{color:inherit}
-h1,h2,h3{font-family:"Cormorant Garamond","Times New Roman",serif;font-weight:600;margin:0;line-height:1.1}
-.mobile-container{position:relative;width:100%;max-width:420px;margin:0 auto;padding:0 20px 40px;overflow-x:clip}
-.hidden{display:none!important}
-
-/* ===== NAVBAR + BRAND (same as other pages) ===== */
-.nv{width:calc(100% - 30px);max-width:380px;margin:0;left:50%;transform:translateX(-50%)}
-.nvc{width:calc(100% - 20px);max-width:390px}
-.brand-nav{position:absolute;top:50%;left:50%;right:auto;transform:translate(-50%,-50%);width:max-content;max-width:none;z-index:999;text-decoration:none;display:flex;align-items:center;gap:8px}
-.brand-nav i{color:var(--gold);font-size:18px}
-.brand-nav b{display:block;font-family:"Cormorant Garamond",serif;font-size:20px;color:#fff;letter-spacing:2px;line-height:1}
-.brand-nav small{display:block;font-size:8px;letter-spacing:3px;color:var(--gold)}
-.brand-nav span{text-align:left}
-
-/* ===== TITLE ===== */
-.title{
-  font:400 28px/1.6 "Yesteryear",cursive;text-align:center;margin:26px 0 16px;
-  background:linear-gradient(90deg,#bfc1c2 0%,#f5f5f5 20%,#d4af37 45%,#ffe58a 60%,#c0c0c0 80%,#d4af37 100%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#d4af37;
-  filter:drop-shadow(0 0 6px rgba(212,175,55,.35));
-}
-.card{border:1px solid var(--line);border-radius:18px;background:var(--bg2);padding:20px}
-
-/* ===== TABS ===== */
-.tabs{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:30px;padding:4px;margin-bottom:18px}
-.tabs button{border:0;background:transparent;color:var(--muted);padding:10px;border-radius:26px;font:600 14px system-ui,sans-serif;cursor:pointer}
-.tabs button.on{background:var(--gold);color:#1a0f0a}
-
-/* ===== FIELDS ===== */
-label{display:block;font-size:12px;color:var(--muted);margin-bottom:12px}
-input{display:block;width:100%;margin-top:6px;padding:13px 16px;border-radius:30px;border:1px solid var(--line);background:transparent;color:#fff;font:14px system-ui,sans-serif}
-input:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-
-/* ===== BUTTONS ===== */
-.btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:46px;padding:12px 20px;border-radius:40px;border:1px solid var(--gold);background:transparent;color:var(--gold);font:600 14px system-ui,sans-serif;cursor:pointer;text-decoration:none;margin-top:10px;-webkit-appearance:none;appearance:none}
-.btn.solid{background:var(--gold);color:#1a0f0a}
-.btn[disabled]{opacity:.55;cursor:not-allowed}
-.link{background:none;border:0;color:var(--muted);font-size:12px;text-decoration:underline;cursor:pointer;display:block;margin:14px auto 0}
-
-/* ===== MESSAGES + SCREENS ===== */
-.msg{min-height:18px;font-size:13px;margin:8px 0 0;text-align:center}
-.msg.err{color:#ff6b6b}
-.msg.ok{color:#7ddc9a}
-.center{text-align:center}
-.icon{width:68px;height:68px;border-radius:50%;border:1px solid var(--gold);color:var(--gold);display:grid;place-items:center;font-size:26px;margin:4px auto 14px}
-.icon.solid{background:var(--gold);color:#1a0f0a}
-.center h2{font-size:30px;color:var(--cream);margin-bottom:8px}
-.center p{font-size:13px;color:var(--muted);margin:0 0 6px}
-.center b{color:#fff;word-break:break-all}
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:#01040a;color:#e9e1d8;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+.card{width:100%;max-width:360px;border:1px solid rgba(223,177,91,.25);border-radius:18px;background:#030812;padding:26px 20px;text-align:center}
+h1{margin:0 0 6px;font-size:28px;color:#f7e6b0}
+.sub{margin:0 0 18px;font-size:13px;color:#b9ada1;line-height:1.6}
+.tabs{display:flex;gap:8px;margin-bottom:16px}
+.tab{flex:1;padding:10px;border-radius:40px;border:1px solid #dfb15b;background:none;color:#dfb15b;font-size:14px;cursor:pointer}
+.tab.on{background:#dfb15b;color:#1a0f0a;font-weight:600}
+input{width:100%;padding:13px 14px;margin-bottom:10px;border-radius:12px;border:1px solid rgba(223,177,91,.3);background:#050d1c;color:#e9e1d8;font-size:14px}
+.btn{width:100%;min-height:46px;border:0;border-radius:40px;background:#dfb15b;color:#1a0f0a;font-weight:600;font-size:14px;cursor:pointer;margin-top:4px}
+.btn.alt{background:none;border:1px solid #dfb15b;color:#dfb15b}
+.btn:disabled{opacity:.6}
+.msg{min-height:20px;margin:10px 0 0;font-size:13px;line-height:1.5}
+.msg.err{color:#ff8a80}.msg.ok{color:#9be29b}
+.or{margin:12px 0;font-size:12px;color:#b9ada1}
+.link{display:inline-block;margin-top:14px;font-size:12px;color:#b9ada1;text-decoration:underline;background:none;border:0;cursor:pointer}
+.hide{display:none}
 </style>
 </head>
-
 <body>
-<div class="mobile-container">
+<div class="card">
+  <h1>BarberStudio</h1>
+  <p class="sub" id="sub">Booking ke liye login karo ya naya account banao.</p>
 
-  <!-- NAVBAR + BRAND -->
-  <nav class="nv">
-    <div class="nvmn">
-      <div class="menu-circle">
-        <svg viewBox="0 0 100 100">
-          <defs><path id="menuPath" d="M50,50 m-36,0 a36,36 0 1,1 72,0 a36,36 0 1,1 -72,0"/></defs>
-          <text><textPath href="#menuPath">MENUㅤ ㅤ MENU ㅤㅤ MENU</textPath></text>
-        </svg>
-        <i class="fa-solid fa-scissors"></i>
-      </div>
-    </div>
-    <a href="index.html" class="brand-nav" aria-label="Salon home">
-      <i class="fa-solid fa-scissors"></i>
-      <span><b>SHALON</b><small>HAIR &amp; STYLE</small></span>
-    </a>
-  </nav>
-
-  <nav class="nvc" id="menuPanel">
-    <a href="#" class="close-btn" id="menuClose">&times;</a>
-    <div class="nvcb"><a href="index.html" class="nvch"><h1 class="nvchh">HOME</h1></a></div>
-    <div class="nvcb"><a href="special.html" class="nvch"><h1 class="nvchh">EXCLUSIVE SERVICE</h1></a></div>
-    <div class="nvcb"><a href="booking.html" class="nvch"><h1 class="nvchh">BOOKING PAGE</h1></a></div>
-    <div class="nvcb"><a href="SALON DETAIL.html" class="nvch"><h1 class="nvchh">About Shalon</h1></a></div>
-    <div class="nvcb"><a href="shop.html" class="nvch"><h1 class="nvchh">SHOP</h1></a></div>
-    <div class="nvcb"><a href="login.html" class="nvch"><h1 class="nvchh">LOGIN</h1></a></div>
-  </nav>
-  <div class="gpn"></div>
-
-  <h1 class="title" id="pageTitle">Welcome ~</h1>
-
-  <div class="card">
-
-    <!-- 1. LOGIN / SIGN UP -->
-    <div id="vForm">
-      <div class="tabs" role="tablist">
-        <button type="button" id="tabSignup" class="on" role="tab">Sign up</button>
-        <button type="button" id="tabLogin" role="tab">Login</button>
-      </div>
-
-      <label id="fName">Name
-        <input id="inName" type="text" autocomplete="name" placeholder="Aapka naam">
-      </label>
-      <label>Email (Gmail)
-        <input id="inEmail" type="email" autocomplete="email" placeholder="yourname@gmail.com">
-      </label>
-      <label>Password
-        <input id="inPass" type="password" autocomplete="new-password" placeholder="Kam se kam 6 characters">
-      </label>
-
-      <button type="button" class="btn solid" id="btnSubmit">Create account</button>
-      <p class="msg" id="formMsg" role="alert"></p>
-      <button type="button" class="link hidden" id="btnForgot">Password bhool gaye?</button>
-    </div>
-
-    <!-- 2. VERIFY EMAIL -->
-    <div id="vVerify" class="center hidden">
-      <div class="icon"><i class="fa-solid fa-envelope-circle-check"></i></div>
-      <h2>Gmail verify karo</h2>
-      <p>Humne verification link bheja hai:</p>
-      <p><b id="verifyEmail"></b></p>
-      <p>Apna Gmail kholo, link par click karo, phir yahan wapas aao. Mail na mile to Spam ya Promotions folder bhi dekho.</p>
-      <button type="button" class="btn solid" id="btnChecked">Maine verify kar liya</button>
-      <button type="button" class="btn" id="btnResend">Mail dobara bhejo</button>
-      <p class="msg" id="verifyMsg" role="alert"></p>
-      <button type="button" class="link" id="btnWrong">Galat email? Logout karo</button>
-    </div>
-
-    <!-- 3. DONE -->
-    <div id="vDone" class="center hidden">
-      <div class="icon solid"><i class="fa-solid fa-check"></i></div>
-      <h2>Email verified</h2>
-      <p>Aap login ho:</p>
-      <p><b id="doneEmail"></b></p>
-      <p id="doneNote"></p>
-      <a href="index.html" class="btn solid" id="btnContinue">Continue</a>
-      <button type="button" class="link" id="btnLogout">Logout</button>
-    </div>
-
+  <div class="tabs">
+    <button class="tab on" id="tabLogin">Login</button>
+    <button class="tab" id="tabSignup">Sign up</button>
   </div>
+
+  <input type="text" id="name" placeholder="Your name" class="hide">
+  <input type="email" id="email" placeholder="Email">
+  <input type="password" id="password" placeholder="Password (min 6 characters)">
+  <button class="btn" id="mainBtn">Login</button>
+
+  <div class="or">ya</div>
+  <button class="btn alt" id="googleBtn">Google se continue karo</button>
+
+  <button class="btn alt hide" id="resendBtn" style="margin-top:10px">Verify email dobara bhejo</button>
+  <button class="link hide" id="forgotBtn">Password bhool gaye?</button>
+
+  <p class="msg" id="msg"></p>
+  <a class="link" href="index.html">Home par jao</a>
 </div>
 
-<script src="salon.js"></script>
+<script>
+"use strict";
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import {
-  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
-  sendEmailVerification, updateProfile, onAuthStateChanged, signOut, sendPasswordResetEmail
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { getFirestore, doc, setDoc, serverTimestamp }
-  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-/* ================= SETTINGS ================= */
-const GMAIL_ONLY = true;     // true = sirf @gmail.com se sign up. Sab emails allow karne ho to false karo.
-const RESEND_WAIT = 60;      // seconds
-
-const firebaseConfig = {
+/* ================= FIREBASE ================= */
+firebase.initializeApp({
   apiKey: "AIzaSyDJwlPt6yY3eCc7I5UyHV7p-APnICkuCeQ",
   authDomain: "barberstudio-389f0.firebaseapp.com",
   projectId: "barberstudio-389f0",
@@ -176,189 +63,137 @@ const firebaseConfig = {
   messagingSenderId: "69089290514",
   appId: "1:69089290514:web:ab604123e76c4eb24cabcb",
   measurementId: "G-ZBDB0XWN7K"
-};
+});
+const auth = firebase.auth();
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+/* ================= NEXT (wapas kahan jaana hai) ================= */
+const BOOKING_URL = "https://ofhrshu92388-ux.github.io/Salon.web/booking.html";
+const nextParam = new URLSearchParams(location.search).get("next");
+const nextUrl = (nextParam && nextParam.startsWith("https://ofhrshu92388-ux.github.io/"))
+  ? nextParam : BOOKING_URL;
 
-const $ = (id) => document.getElementById(id);
-let mode = "signup";          // signup | login
-let busy = false;
-let redirectTimer = null;
+function goNext() { location.href = nextUrl; }
 
-/* ================= HELPERS ================= */
-// kahan wapas bhejna hai: sirf apni .html file (open redirect se bachne ke liye)
-function nextPage() {
-  const n = new URLSearchParams(location.search).get("next") || "";
-  return /^[\w\-. %()]+\.html$/.test(n) ? n : "";
+/* ================= ELEMENTS ================= */
+const $ = id => document.getElementById(id);
+const nameEl = $("name"), emailEl = $("email"), passEl = $("password");
+const mainBtn = $("mainBtn"), googleBtn = $("googleBtn");
+const resendBtn = $("resendBtn"), forgotBtn = $("forgotBtn");
+const msg = $("msg");
+let mode = "login";
+
+function say(text, ok) {
+  msg.textContent = text || "";
+  msg.className = "msg " + (ok ? "ok" : "err");
 }
-function show(which) {
-  ["vForm", "vVerify", "vDone"].forEach((v) => $(v).classList.toggle("hidden", v !== which));
-  $("pageTitle").textContent = which === "vForm" ? "Welcome ~" : which === "vVerify" ? "Verify Email ~" : "All set ~";
-}
-function setMsg(el, text, ok) {
-  el.textContent = text || "";
-  el.className = "msg " + (text ? (ok ? "ok" : "err") : "");
-}
+
 function setMode(m) {
   mode = m;
-  const signup = m === "signup";
-  $("tabSignup").classList.toggle("on", signup);
-  $("tabLogin").classList.toggle("on", !signup);
-  $("fName").classList.toggle("hidden", !signup);
-  $("btnSubmit").textContent = signup ? "Create account" : "Login";
-  $("inPass").autocomplete = signup ? "new-password" : "current-password";
-  $("btnForgot").classList.toggle("hidden", signup);
-  setMsg($("formMsg"), "");
+  $("tabLogin").classList.toggle("on", m === "login");
+  $("tabSignup").classList.toggle("on", m === "signup");
+  nameEl.classList.toggle("hide", m !== "signup");
+  forgotBtn.classList.toggle("hide", m !== "login");
+  mainBtn.textContent = m === "login" ? "Login" : "Account banao";
+  resendBtn.classList.add("hide");
+  say("");
 }
-function validEmail(email) {
-  const basic = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  return GMAIL_ONLY ? /^[^\s@]+@gmail\.com$/i.test(email) : basic;
-}
-function niceError(e) {
-  const map = {
-    "auth/email-already-in-use": "Ye email pehle se registered hai. Login tab use karo.",
-    "auth/invalid-email": "Email sahi nahi hai.",
-    "auth/weak-password": "Password kam se kam 6 characters ka rakho.",
-    "auth/invalid-credential": "Email ya password galat hai.",
-    "auth/user-not-found": "Is email se account nahi mila.",
-    "auth/wrong-password": "Password galat hai.",
-    "auth/too-many-requests": "Bahut zyada try ho gaye. Thodi der baad dobara try karo.",
-    "auth/network-request-failed": "Internet check karo aur dobara try karo.",
-    "auth/operation-not-allowed": "Firebase me Email/Password sign-in on nahi hai.",
-    "auth/unauthorized-domain": "Is domain ko Firebase ke Authorized domains me add karo."
-  };
-  return map[e && e.code] || "Kuch gadbad hui. Dobara try karo.";
+$("tabLogin").onclick = () => setMode("login");
+$("tabSignup").onclick = () => setMode("signup");
+setMode("login");
+
+function errText(e) {
+  const c = e && e.code;
+  if (c === "auth/invalid-email") return "Email sahi nahi hai.";
+  if (c === "auth/weak-password") return "Password kam se kam 6 characters ka rakho.";
+  if (c === "auth/email-already-in-use") return "Ye email pehle se registered hai. Login karo.";
+  if (c === "auth/invalid-credential" || c === "auth/wrong-password" || c === "auth/user-not-found")
+    return "Email ya password galat hai.";
+  if (c === "auth/too-many-requests") return "Bahut zyada koshish ho gayi. Thodi der baad try karo.";
+  if (c === "auth/popup-closed-by-user") return "Google window band ho gayi.";
+  if (c === "auth/unauthorized-domain")
+    return "Firebase me ye domain authorized nahi hai (Authentication > Settings > Authorized domains).";
+  return (e && e.message) || "Kuch gadbad ho gayi.";
 }
 
-/* ================= SIGN UP / LOGIN ================= */
-async function submit() {
-  if (busy) return;
-  const name = $("inName").value.trim();
-  const email = $("inEmail").value.trim().toLowerCase();
-  const pass = $("inPass").value;
-  const msg = $("formMsg");
+/* verify mail me bhi wapsi ka link jaata hai */
+function sendVerify(user) {
+  return user.sendEmailVerification({ url: nextUrl });
+}
 
-  if (mode === "signup" && name.length < 2) return setMsg(msg, "Apna naam likho.");
-  if (!email) return setMsg(msg, "Email likho.");
-  if (mode === "signup" && !validEmail(email))
-    return setMsg(msg, GMAIL_ONLY ? "Sirf Gmail address (@gmail.com) use karo." : "Sahi email likho.");
-  if (pass.length < 6) return setMsg(msg, "Password kam se kam 6 characters ka rakho.");
+/* ================= LOGIN / SIGNUP ================= */
+mainBtn.onclick = async () => {
+  const email = emailEl.value.trim();
+  const pass = passEl.value;
+  const name = nameEl.value.trim();
 
-  busy = true; $("btnSubmit").disabled = true; setMsg(msg, "");
+  if (!email || !pass) { say("Email aur password dono daalo."); return; }
+  if (mode === "signup" && !name) { say("Apna naam daalo."); return; }
+
+  mainBtn.disabled = true;
+  say("");
+
   try {
     if (mode === "signup") {
-      const cred = await createUserWithEmailAndPassword(auth, email, pass);
-      await updateProfile(cred.user, { displayName: name });
-      await sendEmailVerification(cred.user);
-      setMsg($("verifyMsg"), "Verification mail bhej diya.", true);
-      startCooldown(RESEND_WAIT);
+      const cred = await auth.createUserWithEmailAndPassword(email, pass);
+      await cred.user.updateProfile({ displayName: name });
+      await sendVerify(cred.user);
+      say("Account ban gaya. " + email + " par verify link bheja hai. Link dabane ke baad yahan Login karo.", true);
+      resendBtn.classList.remove("hide");
+      setTimeout(() => {}, 0);
     } else {
-      await signInWithEmailAndPassword(auth, email, pass);
+      const cred = await auth.signInWithEmailAndPassword(email, pass);
+      await cred.user.reload();
+      if (auth.currentUser.emailVerified) {
+        goNext();
+      } else {
+        say("Pehle apna Gmail verify karo. Mail me aaye link par click karo, phir dobara Login karo.");
+        resendBtn.classList.remove("hide");
+      }
     }
-    // aage ka kaam onAuthStateChanged karega
   } catch (e) {
-    setMsg(msg, niceError(e));
+    say(errText(e));
   } finally {
-    busy = false; $("btnSubmit").disabled = false;
+    mainBtn.disabled = false;
   }
-}
-
-/* ================= VERIFY SCREEN ================= */
-async function checkVerified() {
-  const user = auth.currentUser, msg = $("verifyMsg");
-  if (!user) return show("vForm");
-  setMsg(msg, "");
-  $("btnChecked").disabled = true;
-  try {
-    await user.reload();
-    if (auth.currentUser.emailVerified) showDone(auth.currentUser);
-    else setMsg(msg, "Abhi email verify nahi hua. Gmail me link par click karke phir try karo.");
-  } catch (e) {
-    setMsg(msg, niceError(e));
-  } finally {
-    $("btnChecked").disabled = false;
-  }
-}
-
-let cooldown = 0, cdTimer;
-function startCooldown(sec) {
-  cooldown = sec;
-  clearInterval(cdTimer);
-  const btn = $("btnResend");
-  const tick = () => {
-    if (cooldown <= 0) { clearInterval(cdTimer); btn.disabled = false; btn.textContent = "Mail dobara bhejo"; return; }
-    btn.disabled = true; btn.textContent = "Dobara bhejo (" + cooldown + "s)"; cooldown--;
-  };
-  tick(); cdTimer = setInterval(tick, 1000);
-}
-async function resend() {
-  const user = auth.currentUser, msg = $("verifyMsg");
-  if (!user) return;
-  try {
-    await sendEmailVerification(user);
-    setMsg(msg, "Verification mail dobara bhej diya.", true);
-    startCooldown(RESEND_WAIT);
-  } catch (e) { setMsg(msg, niceError(e)); }
-}
-
-function showVerify(user) {
-  $("verifyEmail").textContent = user.email;
-  show("vVerify");
-}
-
-/* ================= DONE SCREEN ================= */
-async function showDone(user) {
-  clearInterval(cdTimer);
-  $("doneEmail").textContent = user.email;
-  const next = nextPage();
-  $("btnContinue").href = next || "index.html";
-  $("btnContinue").textContent = next ? "Wapas jao" : "Continue";
-  $("doneNote").textContent = next ? "Aapko thodi der me wapas bheja ja raha hai..." : "";
-  show("vDone");
-
-  // profile Firestore me save (rules set na ho to chupchap skip hota hai)
-  try {
-    await user.getIdToken(true);
-    await setDoc(doc(db, "users", user.uid), {
-      name: user.displayName || "", email: user.email, verified: true, updatedAt: serverTimestamp()
-    }, { merge: true });
-  } catch (e) { console.warn("Profile save skip:", e.code || e); }
-
-  clearTimeout(redirectTimer);
-  if (next) redirectTimer = setTimeout(() => { location.href = next; }, 1500);
-}
-
-/* ================= EVENTS ================= */
-$("tabSignup").onclick = () => setMode("signup");
-$("tabLogin").onclick = () => setMode("login");
-$("btnSubmit").onclick = submit;
-["inName", "inEmail", "inPass"].forEach((id) =>
-  $(id).addEventListener("keydown", (e) => { if (e.key === "Enter") submit(); }));
-$("btnChecked").onclick = checkVerified;
-$("btnResend").onclick = resend;
-$("btnWrong").onclick = () => signOut(auth);
-$("btnLogout").onclick = () => { clearTimeout(redirectTimer); signOut(auth); };
-$("btnForgot").onclick = async () => {
-  const email = $("inEmail").value.trim().toLowerCase(), msg = $("formMsg");
-  if (!email) return setMsg(msg, "Pehle upar email likho.");
-  try {
-    await sendPasswordResetEmail(auth, email);
-    setMsg(msg, "Password reset ka link email par bhej diya.", true);
-  } catch (e) { setMsg(msg, niceError(e)); }
 };
 
-/* ================= LOGIN STATE ================= */
-setMode(new URLSearchParams(location.search).get("tab") === "login" ? "login" : "signup");
+/* ================= GOOGLE ================= */
+googleBtn.onclick = async () => {
+  googleBtn.disabled = true;
+  say("");
+  try {
+    await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    goNext();                          // Google email already verified hota hai
+  } catch (e) {
+    say(errText(e));
+  } finally {
+    googleBtn.disabled = false;
+  }
+};
 
-onAuthStateChanged(auth, async (user) => {
-  if (!user) { clearTimeout(redirectTimer); clearInterval(cdTimer); return show("vForm"); }
-  try { await user.reload(); } catch (e) { /* offline: purani state use hogi */ }
-  const cu = auth.currentUser;
-  if (!cu) return show("vForm");
-  if (cu.emailVerified) showDone(cu);
-  else showVerify(cu);
+/* ================= RESEND / FORGOT ================= */
+resendBtn.onclick = async () => {
+  try {
+    if (!auth.currentUser) { say("Pehle Login karo, phir verify mail dobara bhejo."); return; }
+    await sendVerify(auth.currentUser);
+    say("Verify mail dobara bhej diya.", true);
+  } catch (e) { say(errText(e)); }
+};
+
+forgotBtn.onclick = async () => {
+  const email = emailEl.value.trim();
+  if (!email) { say("Pehle email daalo."); return; }
+  try {
+    await auth.sendPasswordResetEmail(email);
+    say("Password reset link " + email + " par bhej diya.", true);
+  } catch (e) { say(errText(e)); }
+};
+
+/* ================= PEHLE SE LOGIN USER ================= */
+auth.onAuthStateChanged(async (user) => {
+  if (!user) return;
+  try { await user.reload(); } catch (e) {}
+  if (auth.currentUser && auth.currentUser.emailVerified) goNext();
 });
 </script>
 </body>
