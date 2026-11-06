@@ -9,173 +9,181 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Molle:ital@1&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=melodrama@300,400,500,600,700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#01040a; --bg2:#030812; --gold:#dfb15b; --cream:#f7e6b0;
-  --text:#e9e1d8; --muted:#b9ada1; --line:rgba(223,177,91,.25);
+--bg:#ffffff; --bg2:#f8f4ec; --gold:#b98a2e; --cream:#1c1611;
+--text:#2a231d; --muted:#6b5f53; --line:rgba(185,138,46,.35);
+--head:'Melodrama','Cormorant Garamond','Times New Roman',serif;
 }
 *{box-sizing:border-box}
 body{margin:0 auto;max-width:420px;width:100%;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
 img{max-width:100%;display:block}
 a{color:inherit}
-h1,h2,h3{font-family:"Cormorant Garamond","Times New Roman",serif;font-weight:600;margin:0;line-height:1.1}
+h1,h2,h3{font-family:var(--head);font-weight:500;margin:0;line-height:1.1}
 .mobile-container{width:100%;max-width:420px;margin:0 auto;overflow-x:clip}
 
 /* ===== BRAND LOGO INSIDE NAVBAR ===== */
 .brand-nav{
-  max-width:420px;position:fixed;top:14px;left:50%;transform:translateX(-50%);
-  z-index:999;text-decoration:none;text-align:center;
-  display:flex;align-items:center;gap:8px;
+max-width:420px;position:fixed;top:14px;left:50%;transform:translateX(-50%);
+z-index:999;text-decoration:none;text-align:center;
+display:flex;align-items:center;gap:8px;
 }
 .brand-nav i{color:var(--gold);font-size:18px}
-.brand-nav b{display:block;font-family:"Cormorant Garamond",serif;font-size:20px;color:#fff;letter-spacing:2px;line-height:1}
+.brand-nav b{display:block;font-family:var(--head);font-weight:600;font-size:20px;color:var(--cream);letter-spacing:2px;line-height:1}
 .brand-nav small{display:block;font-size:8px;letter-spacing:3px;color:var(--gold)}
 
 section{padding:44px 20px}
 .btn{display:inline-block;padding:13px 26px;border-radius:40px;font-size:14px;text-decoration:none;border:1px solid var(--gold);color:var(--gold);cursor:pointer}
-.btn.solid{background:var(--gold);color:#1a0f0a;font-weight:600}
+.btn.solid{background:var(--gold);color:#fff;font-weight:600}
 .btn.block{display:block;text-align:center;width:100%}
 .lead{color:var(--muted);font-size:14px;margin:14px 0 22px}
 
-/* ===== HERO ===== */
+/* ===== HERO (dark overlay over video, so text stays light) ===== */
 .hero{position:relative;min-height:640px;padding:110px 20px 36px;display:flex;flex-direction:column;justify-content:flex-end;text-align:center;overflow:hidden}
 .hero video::-webkit-media-controls,.hero video::-webkit-media-controls-start-playback-button,.hero video::-webkit-media-controls-overlay-play-button,.hero video::-webkit-media-controls-panel{display:none!important;-webkit-appearance:none;opacity:0}
 .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;z-index:0}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(1,4,10,.55) 0%,rgba(1,4,10,.35) 35%,rgba(1,4,10,.95) 100%);z-index:1}
 .hero>*:not(video){position:relative;z-index:2}
-.hero small{letter-spacing:3px;font-size:11px;color:var(--gold)}
-.hero h1{font-size:46px;color:#fff;margin:10px 0 0}
+.hero small{letter-spacing:3px;font-size:11px;color:#dfb15b}
+.hero h1{font-size:40px;letter-spacing:-.5px;color:#fff;margin:10px 0 0}
+.hero .lead{color:#e9e1d8}
+.hero .btn:not(.solid){color:#fff;border-color:#dfb15b}
+.hero .btn.solid{background:#dfb15b;color:#1a0f0a}
 .hero .btns{display:flex;gap:10px;justify-content:center;margin-top:6px}
 
-/* ===== 3 CARDS ===== */
+/* ===== 3 CARDS (white text over image overlay) ===== */
 .cards{display:grid;gap:14px;padding-top:20px}
 .card{position:relative;height:250px;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;border:1px solid var(--line);background-size:cover;background-position:center}
 .card::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.85))}
 .card>*{position:relative}
-.card h2{font-size:28px;color:#fff}
+.card h2{font-size:26px;color:#fff}
 .card p{font-size:13px;color:#ddd;margin:6px 0 14px}
-.c1{background-image:url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80')}
-.c2{background-image:url('1791623026520.png')}
-.c3{background-image:url('https://thumbs.dreamstime.com/b/elegant-hair-salon-interior-design-modern-luxury-clean-lines-minimalist-style-bright-space-natural-light-mirrors-chairs-stylish-389998034.jpg')}
+.card .btn:not(.solid){color:#fff;border-color:#dfb15b}
+.card .btn.solid{background:#dfb15b;color:#1a0f0a}
+.c1{background-image:url('https://franckprovost.in/wp-content/uploads/2026/05/84c74a55f88e4158bf225045ba891b9c-best-salon-for-men-bangalore-grooming-essentials-hero.png')}
+.c2{background-image:url('https://www.lorealprofessionnel.in/-/media/project/loreal/brand-sites/lp/apac/in/hair-styling/landing-page/lp_techni_art_all-white_new.jpg?rev=978910a1eee34291bf019a44443018f6&cx=0.48&cy=0.44&cw=1920&ch=1920&hash=4C06B0BBB22F4AA39F84CC1EE157455F')}
+.c3{background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMfWWqhnqsvd2nVAhHO0aEXGC0AvzzGhouAX6dW5saA3_AjI88C7gVAsNF&s=10')}
 
-/* ===== STORY ===== */
+/* ===== STORY (off-white) ===== */
 .story{background:var(--bg2)}
 .story .img{height:300px;border-radius:18px;background:url('1791623026520.png') center/cover;margin-bottom:22px;border:1px solid var(--line)}
 .story .img#storyFrames{background-color:#000;background-size:cover;background-position:center;background-repeat:no-repeat}
-.story h2{font-size:36px;color:var(--cream)}
+.story h2{font-size:34px;color:var(--cream)}
 .story p{color:var(--muted);font-size:14px}
 
 /* ===== STORY SCROLL-DRIVEN FRAME ANIMATION ===== */
 #storySection{
-  position:relative;
-  height:350vh;
-  padding:0 20px;
-  background:var(--bg2);
-  box-sizing:border-box;
+position:relative;
+height:350vh;
+padding:0 20px;
+background:var(--bg2);
+box-sizing:border-box;
 }
 #storySection .story-sticky{
-  position:-webkit-sticky;
-  position:sticky;
-  top:104px;
-  padding-top:20px;
-  padding-bottom:24px;
-  width:100%;
-  box-sizing:border-box;
+position:-webkit-sticky;
+position:sticky;
+top:104px;
+padding-top:20px;
+padding-bottom:24px;
+width:100%;
+box-sizing:border-box;
 }
 #storySection .img#storyFrames{
-  position:relative;
-  height:370px;
-  width:100%;
-  border-radius:18px;
-  border:1px solid var(--line);
-  overflow:hidden;
-  background-color:#000;
-  margin-bottom:20px;
-  box-sizing:border-box;
+position:relative;
+height:370px;
+width:100%;
+border-radius:18px;
+border:1px solid var(--line);
+overflow:hidden;
+background-color:#000;
+margin-bottom:20px;
+box-sizing:border-box;
 }
 #storySection #storyCanvas{
-  width:100%;
-  height:100%;
-  display:block;
-  border-radius:17px;
+width:100%;
+height:100%;
+display:block;
+border-radius:17px;
 }
 #storySection .story-view-label{
-  display:block !important;
-  position:relative !important;
-  z-index:20 !important;
-  width:100%;
-  min-height:38px;
-  margin:0 0 12px;
-  padding:8px 12px;
-  color:#dfb15b !important;
-  background:#030812 !important;
-  border:1px solid rgba(223,177,91,.45);
-  border-radius:10px;
-  font-size:19px !important;
-  font-weight:700 !important;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  text-align: center;
-  line-height:20px;
-  opacity:1 !important;
-  visibility:visible !important;
+display:block !important;
+position:relative !important;
+z-index:20 !important;
+width:100%;
+min-height:38px;
+margin:0 0 12px;
+padding:8px 12px;
+color:#b98a2e !important;
+background:#ffffff !important;
+border:1px solid rgba(185,138,46,.5);
+border-radius:10px;
+font-family:var(--head);
+font-size:19px !important;
+font-weight:600 !important;
+letter-spacing:2px;
+text-transform:uppercase;
+text-align: center;
+line-height:20px;
+opacity:1 !important;
+visibility:visible !important;
 }
 #storySection .story-debug{
-  position:absolute;
-  top:10px;
-  right:10px;
-  background:rgba(0,0,0,.75);
-  color:#00ff88;
-  font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
-  font-size:11px;
-  padding:4px 8px;
-  border-radius:6px;
-  border:1px solid rgba(0,255,136,.3);
-  pointer-events:none;
-  z-index:10;
+position:absolute;
+top:10px;
+right:10px;
+background:rgba(0,0,0,.75);
+color:#00ff88;
+font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+font-size:11px;
+padding:4px 8px;
+border-radius:6px;
+border:1px solid rgba(0,255,136,.3);
+pointer-events:none;
+z-index:10;
 }
 #storySection .story-error{
-  position:absolute;
-  inset:10px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:12px;
-  text-align:center;
-  color:#ff6b6b;
-  background:rgba(1,4,10,.95);
-  border:1px solid #ff4d4d;
-  border-radius:12px;
-  font-size:12px;
-  word-break:break-all;
-  z-index:11;
+position:absolute;
+inset:10px;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:12px;
+text-align:center;
+color:#ff6b6b;
+background:rgba(1,4,10,.95);
+border:1px solid #ff4d4d;
+border-radius:12px;
+font-size:12px;
+word-break:break-all;
+z-index:11;
 }
 @media (max-height:640px){
-  #storySection .story-sticky{top:88px;padding-top:10px}
-  #storySection .img#storyFrames{height:min(320px,48vh);margin-bottom:14px}
-  #storySection h2{font-size:30px}
+#storySection .story-sticky{top:88px;padding-top:10px}
+#storySection .img#storyFrames{height:min(320px,48vh);margin-bottom:14px}
+#storySection h2{font-size:30px}
 }
 
 /* ===== STATS ===== */
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.stat{border:1px solid var(--line);border-radius:14px;padding:20px 14px;text-align:center}
-.stat b{font-family:"Cormorant Garamond",serif;font-size:38px;color:var(--gold);display:block}
+.stat{border:1px solid var(--line);border-radius:14px;padding:20px 14px;text-align:center;background:var(--bg2)}
+.stat b{font-family:var(--head);font-weight:500;font-size:36px;color:var(--gold);display:block}
 .stat span{font-size:12px;color:var(--muted)}
 
 /* ===== SLIDERS ===== */
 .head{display:flex;justify-content:space-between;align-items:end;gap:10px;margin-bottom:6px}
-.head h2{font-size:32px;color:var(--cream)}
+.head h2{font-size:30px;color:var(--cream)}
 .head a{font-size:12px;color:var(--gold);white-space:nowrap}
 .rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:16px 20px 8px;margin:0 -20px;scrollbar-width:none}
 .rail::-webkit-scrollbar{display:none}
-.item{flex:0 0 78%;scroll-snap-align:start;border:1px solid var(--line);border-radius:16px;background:var(--bg2);overflow:hidden}
-.item .pic{height:170px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.item{flex:0 0 78%;scroll-snap-align:start;border:1px solid var(--line);border-radius:16px;background:var(--bg2);overflow:hidden;box-shadow:0 4px 14px rgba(60,40,10,.06)}
+.item .pic{height:170px;background-color:#fff;background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .item .pic img{width:100%;height:100%;object-fit:contain;object-position:center}
 .item .body{padding:14px}
-.item h3{font-size:20px;color:#fff}
+.item h3{font-size:20px;color:var(--cream)}
 .item .price{color:var(--gold);font-weight:600;margin:6px 0 12px;font-size:15px}
-.event{border:1px solid var(--line);border-radius:16px;padding:18px;background:var(--bg2);margin-top:14px}
-.event h3{font-size:26px;color:#fff}
+.event{border:1px solid var(--line);border-radius:16px;padding:18px;background:#fff;margin-top:14px;box-shadow:0 4px 14px rgba(60,40,10,.06)}
+.event h3{font-size:24px;color:var(--cream)}
 .event p{font-size:13px;color:var(--muted);margin:6px 0 14px}
 .event .row{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .event .row b{font-size:22px;color:var(--gold)}
@@ -184,23 +192,24 @@ section{padding:44px 20px}
 .post{display:block;text-decoration:none;margin-top:20px}
 .post .pic{height:210px;border-radius:16px;background-size:cover;background-position:center;border:1px solid var(--line)}
 .post small{display:block;margin-top:12px;font-size:11px;letter-spacing:2px;color:var(--gold)}
-.post h3{font-size:24px;color:#fff;margin-top:4px}
+.post h3{font-size:22px;color:var(--cream);margin-top:4px}
 .post span{font-size:12px;color:var(--muted)}
 
-/* ===== FOOTER ===== */
-.footer{background:linear-gradient(180deg,var(--bg2),#000205);border-top:1px solid var(--line);padding:44px 22px 28px}
+/* ===== FOOTER (off-white) ===== */
+.footer{background:linear-gradient(180deg,var(--bg2),#f1ebdf);border-top:1px solid var(--line);padding:44px 22px 28px}
 .f-brand{text-align:center}
 .f-brand .mark{width:54px;height:54px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;margin:0 auto 12px;color:var(--gold);font-size:20px}
-.f-brand b{display:block;font-family:"Cormorant Garamond",serif;font-size:30px;color:#fff;letter-spacing:3px}
+.f-brand b{display:block;font-family:var(--head);font-weight:600;font-size:28px;color:var(--cream);letter-spacing:3px}
 .f-brand p{font-size:13px;color:var(--muted);margin:8px auto 0;max-width:280px}
-.f-news{margin:28px 0;padding:18px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.03)}
+.f-news{margin:28px 0;padding:18px;border:1px solid var(--line);border-radius:16px;background:#fff}
 .f-news h3{font-size:22px;color:var(--cream);margin-bottom:12px}
 .news{display:flex;gap:8px}
-.news input{flex:1;min-width:0;padding:13px 16px;border-radius:40px;border:1px solid var(--line);background:transparent;color:#fff;font-size:14px}
+.news input{flex:1;min-width:0;padding:13px 16px;border-radius:40px;border:1px solid var(--line);background:#fff;color:var(--text);font-size:14px}
+.news input::placeholder{color:#9a8d80}
 .news .btn{padding:13px 18px}
 .news input:focus-visible,.btn:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .f-cols{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:26px}
-.f-cols h4{font-family:"Cormorant Garamond",serif;font-size:20px;color:var(--gold);margin:0 0 10px;font-weight:600}
+.f-cols h4{font-family:var(--head);font-size:19px;color:var(--gold);margin:0 0 10px;font-weight:600}
 .f-cols ul,.f-contact{list-style:none;margin:0;padding:0}
 .f-cols li{padding:5px 0;font-size:14px}
 .f-cols a{text-decoration:none;color:var(--muted)}
@@ -211,7 +220,7 @@ section{padding:44px 20px}
 .f-contact i{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--gold);font-size:13px;flex:none}
 .social{display:flex;justify-content:center;gap:12px;margin:0 0 6px}
 .social a{width:44px;height:44px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--gold);text-decoration:none}
-.social a:hover{background:var(--gold);color:#1a0f0a}
+.social a:hover{background:var(--gold);color:#fff}
 .copy{text-align:center;font-size:11px;color:#8d8176;margin:22px 0 0}
 
 
@@ -259,177 +268,181 @@ section,.footer{padding-left:20px;padding-right:20px}
 .nv{width:calc(100% - 30px);max-width:380px;margin:0;left:50%;transform:translateX(-50%)}
 .nvc{width:calc(100% - 20px);max-width:390px}
 .brand-nav{position:absolute;top:50%;left:50%;right:auto;transform:translate(-50%,-50%);height:auto;max-width:none;width:max-content}
+
+/* ===== MELODRAMA FONT (menu titles) + THEME RE-ASSERT AFTER salon.css ===== */
+.nvchh{font-family:var(--head);font-weight:500}
+body{background:var(--bg);color:var(--text)}
+.story,#storySection{background:var(--bg2)}
+
 </style>
 </head>
 <body>
 <div class="mobile-container">
 
-  <!-- NAVBAR (same as before) + BRAND LOGO -->
-  <nav class="nv">
-    <div class="nvmn" id="nvmn">
-      <div class="menu-circle">
-        <svg viewBox="0 0 100 100">
-          <defs><path id="menuPath" d="M50,50 m-36,0 a36,36 0 1,1 72,0 a36,36 0 1,1 -72,0"/></defs>
-          <text><textPath href="#menuPath">MENUㅤ ㅤ MENU ㅤㅤ MENU</textPath></text>
-        </svg>
-        <i class="fa-solid fa-scissors"></i>
-      </div>
-    </div>
-    <a href="index.html" class="brand-nav" aria-label="Salon home">
-      <i class="fa-solid fa-scissors"></i>
-      <span><b>SHALON</b><small>HAIR &amp; STYLE</small></span>
-    </a>
-  </nav>
-  <nav class="nvc" id="menuPanel">
-    <a href="#" class="close-btn" id="menuClose">&times;</a>
-    <div class="nvcb"><a href="index.html" class="nvch"><h1 class="nvchh">HOME</h1></a></div>
-    <div class="nvcb"><a href="special.html" class="nvch"><h1 class="nvchh">EXCLUSIVE SERVICE</h1></a></div>
-    <div class="nvcb"><a href="booking.html" class="nvch"><h1 class="nvchh">BOOKING PAGE</h1></a></div>
-    <div class="nvcb"><a href="SALON DETAIL.html" class="nvch"><h1 class="nvchh">About Shalon</h1></a></div>
-  </nav>
-  <div class="gpn"></div>
+<!-- NAVBAR (same as before) + BRAND LOGO -->
+<nav class="nv">
+<div class="nvmn" id="nvmn">
+<div class="menu-circle">
+<svg viewBox="0 0 100 100">
+<defs><path id="menuPath" d="M50,50 m-36,0 a36,36 0 1,1 72,0 a36,36 0 1,1 -72,0"/></defs>
+<text><textPath href="#menuPath">MENUㅤ ㅤ MENU ㅤㅤ MENU</textPath></text>
+</svg>
+<i class="fa-solid fa-scissors"></i>
+</div>
+</div>
+<a href="index.html" class="brand-nav" aria-label="Salon home">
+<i class="fa-solid fa-scissors"></i>
+<span><b>SHALON</b><small>HAIR &amp; STYLE</small></span>
+</a>
+</nav>
+<nav class="nvc" id="menuPanel">
+<a href="#" class="close-btn" id="menuClose">&times;</a>
+<div class="nvcb"><a href="index.html" class="nvch"><h1 class="nvchh">HOME</h1></a></div>
+<div class="nvcb"><a href="special.html" class="nvch"><h1 class="nvchh">EXCLUSIVE SERVICE</h1></a></div>
+<div class="nvcb"><a href="booking.html" class="nvch"><h1 class="nvchh">BOOKING PAGE</h1></a></div>
+<div class="nvcb"><a href="SALON DETAIL.html" class="nvch"><h1 class="nvchh">About Shalon</h1></a></div>
+</nav>
+<div class="gpn"></div>
 
-  <!-- HERO -->
-  <header class="hero">
-    <video id="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback controlslist="nodownload nofullscreen noremoteplayback" tabindex="-1" aria-hidden="true"><source src="gemini_generated_video_5a569663.mp4" type="video/mp4"></video>
-    <small>WORLD-CLASS SALON CARE</small>
-    <h1>Master the Art of Hair &amp; Style</h1>
-    <p class="lead">Premium cuts, colour and grooming by trained stylists, in a fresh, clean and hygienic space.</p>
-    <div class="btns">
-      <a href="booking.html" class="btn solid">Book now</a>
-      <a href="special.html" class="btn">Our services</a>
-    </div>
-  </header>
+<!-- HERO -->
+<header class="hero">
+<video id="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback controlslist="nodownload nofullscreen noremoteplayback" tabindex="-1" aria-hidden="true"><source src="gemini_generated_video_5a569663.mp4" type="video/mp4"></video>
+<small>WORLD-CLASS SALON CARE</small>
+<h1>Master the Art of Hair &amp; Style</h1>
+<p class="lead">Premium cuts, colour and grooming by trained stylists, in a fresh, clean and hygienic space.</p>
+<div class="btns">
+<a href="booking.html" class="btn solid">Book now</a>
+<a href="special.html" class="btn">Our services</a>
+</div>
+</header>
 
-  <!-- 3 CARDS -->
-  <section class="cards">
-    <article class="card c1">
-      <h2>Exclusive Services</h2>
-      <p>Signature cuts, colour, spa and styling for every hair type.</p>
-      <a href="special.html" class="btn block">Explore services</a>
-    </article>
-    <article class="card c2">
-      <h2>Products &amp; Care</h2>
-      <p>Professional products our stylists use and recommend.</p>
-      <a href="special.html" class="btn block">Shop products</a>
-    </article>
-    <article class="card c3">
-      <h2>Reserve Your Seat</h2>
-      <p>Pick your preferred time and skip the wait.</p>
-      <a href="booking.html" class="btn solid block">Book now</a>
-    </article>
-  </section>
+<!-- 3 CARDS -->
+<section class="cards">
+<article class="card c1">
+<h2>Exclusive Services</h2>
+<p>Signature cuts, colour, spa and styling for every hair type.</p>
+<a href="special.html" class="btn block">Explore services</a>
+</article>
+<article class="card c2">
+<h2>Products &amp; Care</h2>
+<p>Professional products our stylists use and recommend.</p>
+<a href="special.html" class="btn block">Shop products</a>
+</article>
+<article class="card c3">
+<h2>Reserve Your Seat</h2>
+<p>Pick your preferred time and skip the wait.</p>
+<a href="booking.html" class="btn solid block">Book now</a>
+</article>
+</section>
 
-  <!-- STORY (225 frame scroll animation) -->
-  <section class="story" id="storySection">
-    <div class="story-sticky" id="storySticky">
-      <div class="img" id="storyFrames" role="img" aria-label="Salon stylist at work">
-        <canvas id="storyCanvas"></canvas>
-        <div id="storyDbg" class="story-debug" style="display:none;"></div>
-        <div id="storyErr" class="story-error" style="display:none;"></div>
-      </div>
-      <div id="storyViewLabel" class="story-view-label" aria-live="polite" style="display:block!important;position:relative!important;z-index:20!important;width:100%;min-height:38px;margin:0 0 12px;padding:8px 12px;color:#dfb15b!important;background:#030812!important;border:1px solid rgba(223,177,91,.45);border-radius:10px;font-size:15px!important;font-weight:700!important;line-height:20px;letter-spacing:2px;text-transform:uppercase;visibility:visible!important;opacity:1!important;">
-        Front view
-      </div>
-      <div class="story-content">
-        <h2>From passion to your chair</h2>
-        <p class="lead">Our journey began with a simple belief: every client deserves expert detail, clean tools and a look that feels like them. Today we serve hundreds of happy clients.</p>
-        <a href="SALON DETAIL.html" class="btn solid">Read our story</a>
-      </div>
-    </div>
-  </section>
+<!-- STORY (225 frame scroll animation) -->
+<section class="story" id="storySection">
+<div class="story-sticky" id="storySticky">
+<div class="img" id="storyFrames" role="img" aria-label="Salon stylist at work">
+<canvas id="storyCanvas"></canvas>
+<div id="storyDbg" class="story-debug" style="display:none;"></div>
+<div id="storyErr" class="story-error" style="display:none;"></div>
+</div>
+<div id="storyViewLabel" class="story-view-label" aria-live="polite">Front view</div>
+<div class="story-content">
+<h2>From passion to your chair</h2>
+<p class="lead">Our journey began with a simple belief: every client deserves expert detail, clean tools and a look that feels like them. Today we serve hundreds of happy clients.</p>
+<a href="SALON DETAIL.html" class="btn solid">Read our story</a>
+</div>
+</div>
+</section>
 
-  <!-- STATS -->
-  <section>
-    <div class="stats">
-      <div class="stat"><b>5K+</b><span>Happy clients</span></div>
-      <div class="stat"><b>50+</b><span>Services</span></div>
-      <div class="stat"><b>10+</b><span>Expert stylists</span></div>
-      <div class="stat"><b>100%</b><span>Sterilized tools</span></div>
-    </div>
-  </section>
+<!-- STATS -->
+<section>
+<div class="stats">
+<div class="stat"><b>5K+</b><span>Happy clients</span></div>
+<div class="stat"><b>50+</b><span>Services</span></div>
+<div class="stat"><b>10+</b><span>Expert stylists</span></div>
+<div class="stat"><b>100%</b><span>Sterilized tools</span></div>
+</div>
+</section>
 
-  <!-- SERVICES RAIL -->
-  <section>
-    <div class="head"><h2>Popular services</h2><a href="special.html">View all</a></div>
-    <div class="rail">
-      <div class="item"><div class="pic" style="background-image:url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80')"></div><div class="body"><h3>Haircut &amp; Styling</h3><div class="price">From ₹xxx</div><a href="booking.html" class="btn block">Book</a></div></div>
-      <div class="item"><div class="pic" style="background-image:url('1791623026520.png')"></div><div class="body"><h3>Hair Colour</h3><div class="price">From ₹xxx</div><a href="booking.html" class="btn block">Book</a></div></div>
-      <div class="item"><div class="pic" style="background-image:url('https://thumbs.dreamstime.com/b/elegant-hair-salon-interior-design-modern-luxury-clean-lines-minimalist-style-bright-space-natural-light-mirrors-chairs-stylish-389998034.jpg')"></div><div class="body"><h3>Beard &amp; Grooming</h3><div class="price">From ₹xxx</div><a href="booking.html" class="btn block">Book</a></div></div>
-    </div>
-  </section>
+<!-- SERVICES RAIL -->
+<section>
+<div class="head"><h2>Popular services</h2><a href="special.html">View all</a></div>
+<div class="rail">
+<div class="item"><div class="pic" style="background-image:url('https://www.welefulunisexsalon.com/images/blog/i2.jpg')"></div><div class="body"><h3>Haircut &amp; Styling</h3><div class="price">From ₹xxx</div><a href="booking.html" class="btn block">Book</a></div></div>
+<div class="item"><div class="pic" style="background-image:url('https://www.glazma.com/static/media/glazma-mens-hair-colouring.6f9a3ab0ee34105812fb.jpg')"></div><div class="body"><h3>Hair Colour</h3><div class="price">From ₹xxx</div><a href="booking.html" class="btn block">Book</a></div></div>
+<div class="item"><div class="pic" style="background-image:url('https://im.whatshot.in/img/2024/Mar/vertical-1710929059.jpg?w=375&h=375&q=60&wp=1')"></div><div class="body"><h3>Beard &amp; Grooming</h3><div class="price">From ₹xxx</div><a href="booking.html" class="btn block">Book</a></div></div>
+</div>
+</section>
 
-  <!-- OFFERS / EVENTS -->
-  <section class="story">
-    <div class="head"><h2>Special offers</h2></div>
-    <div class="event"><h3>Festive Glow Package</h3><p>Haircut, spa and styling together, limited slots this month.</p><div class="row"><b>₹xxxx</b><a href="booking.html" class="btn solid">Book now</a></div></div>
-    <div class="event"><h3>Bridal &amp; Party Styling</h3><p>Full look planning with a trial session.</p><div class="row"><b>₹xxxx</b><a href="booking.html" class="btn solid">Book now</a></div></div>
-  </section>
+<!-- OFFERS / EVENTS -->
+<section class="story">
+<div class="head"><h2>Special offers</h2></div>
+<div class="event"><h3>Festive Glow Package</h3><p>Haircut, spa and styling together, limited slots this month.</p><div class="row"><b>₹xxxx</b><a href="booking.html" class="btn solid">Book now</a></div></div>
+<div class="event"><h3>Bridal &amp; Party Styling</h3><p>Full look planning with a trial session.</p><div class="row"><b>₹xxxx</b><a href="booking.html" class="btn solid">Book now</a></div></div>
+</section>
 
-  <!-- PRODUCTS RAIL -->
-  <section>
-    <div class="head"><h2>Pro products, built for care</h2></div>
-    <div class="rail">
-      <div class="item"><div class="pic"><img src="https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/products/pictures/item/free/original/000000000494474609/dKJJhAcTXdD-000000000494474609_1.jpg" alt="Hair serum" loading="lazy"></div><div class="body"><h3>Hair Serum</h3><div class="price">₹xxx</div><a href="special.html" class="btn block">Add to cart</a></div></div>
-      <div class="item"><div class="pic"><img src="https://sfycdn.speedsize.com/56385b25-4e17-4a9a-9bec-c421c18686fb/beminimalist.co/cdn/shop/files/Artboard_1_copy_13_1.jpg?crop=center&amp;height=1260&amp;v=1776762556&amp;width=840" alt="Hair shampoo" loading="lazy"></div><div class="body"><h3>Hair Shampoo</h3><div class="price">₹xxx</div><a href="special.html" class="btn block">Add to cart</a></div></div>
-      <div class="item"><div class="pic"><img src="https://images-static.nykaa.com/media/catalog/product/e/d/eddc22fOLAPL00000002_1.png?tr=w-344,h-344,cm-pad_resize" alt="Hair conditioner" loading="lazy"></div><div class="body"><h3>Hair Conditioner</h3><div class="price">₹xxx</div><a href="special.html" class="btn block">Add to cart</a></div></div>
-      <div class="item"><div class="pic"><img src="https://m.media-amazon.com/images/I/81DycYsQi0L.jpg" alt="Beard oil" loading="lazy"></div><div class="body"><h3>Beard Oil</h3><div class="price">₹xxx</div><a href="special.html" class="btn block">Add to cart</a></div></div>
-    </div>
-  </section>
+<!-- PRODUCTS RAIL -->
+<section>
+<div class="head"><h2>Pro products, built for care</h2></div>
+<div class="rail">
+<div class="item"><div class="pic"><img src="https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/products/pictures/item/free/original/000000000494474609/dKJJhAcTXdD-000000000494474609_1.jpg" alt="Hair serum" loading="lazy"></div><div class="body"><h3>Hair Serum</h3><div class="price">₹xxx</div><a href="special.html" class="btn block">Add to cart</a></div></div>
+<div class="item"><div class="pic"><img src="https://sfycdn.speedsize.com/56385b25-4e17-4a9a-9bec-c421c18686fb/beminimalist.co/cdn/shop/files/Artboard_1_copy_13_1.jpg?crop=center&amp;height=1260&amp;v=1776762556&amp;width=840" alt="Hair shampoo" loading="lazy"></div><div class="body"><h3>Hair Shampoo</h3><div class="price">₹xxx</div><a href="special.html" class="btn block">Add to cart</a></div></div>
+<div class="item"><div class="pic"><img src="https://images-static.nykaa.com/media/catalog/product/e/d/eddc22fOLAPL00000002_1.png?tr=w-344,h-344,cm-pad_resize" alt="Hair conditioner" loading="lazy"></div><div class="body"><h3>Hair Conditioner</h3><div class="price">₹xxx</div><a href="special.html" class="btn block">Add to cart</a></div></div>
+<div class="item"><div class="pic"><img src="https://m.media-amazon.com/images/I/81DycYsQi0L.jpg" alt="Beard oil" loading="lazy"></div><div class="body"><h3>Beard Oil</h3><div class="price">₹xxx</div><a href="special.html" class="btn block">Add to cart</a></div></div>
+</div>
+</section>
 
-  <!-- BLOG -->
-  <section class="story">
-    <div class="head"><h2>Hair tips &amp; insights</h2></div>
-    <a href="#" class="post"><div class="pic" style="background-image:url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80')"></div><small>HAIR CARE</small><h3>How to Keep Colour Fresh Longer</h3><span>October 24, 2026</span></a>
-    <a href="#" class="post"><div class="pic" style="background-image:url('1791623026520.png')"></div><small>GROOMING</small><h3>Choosing the Right Cut for Your Face</h3><span>October 24, 2026</span></a>
-  </section>
+<!-- BLOG -->
+<section class="story">
+<div class="head"><h2>Hair tips &amp; insights</h2></div>
+<a href="#" class="post"><div class="pic" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZKs2LlQDqoWXg4TVcefrcnYHuTX5jMCkz4CoFMiQtcWSLlq6bAwI6_KY&s=10https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80')"></div><small>HAIR CARE</small><h3>How to Keep Colour Fresh Longer</h3><span>October 24, 2026</span></a>
+<a href="#" class="post"><div class="pic" style="background-image:url('https://viralpur.org/wp-content/uploads/2026/10/ChatGPT-Hairstyle-Prompt-for-man.png')"></div><small>GROOMING</small><h3>Choosing the Right Cut for Your Face</h3><span>October 24, 2026</span></a>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="f-brand">
-      <div class="mark"><i class="fa-solid fa-scissors"></i></div>
-      <b>SHALON</b>
-      <p>Fresh, clean and hygienic salon care with expertise in every detail.</p>
-    </div>
+<!-- FOOTER -->
+<footer class="footer">
+<div class="f-brand">
+<div class="mark"><i class="fa-solid fa-scissors"></i></div>
+<b>SHALON</b>
+<p>Fresh, clean and hygienic salon care with expertise in every detail.</p>
+</div>
 
-    <div class="f-news">
-      <h3>Get offers &amp; hair tips</h3>
-      <form class="news" onsubmit="return false">
-        <input type="email" placeholder="Your email address" aria-label="Email address">
-        <button class="btn solid" type="submit">Sign up</button>
-      </form>
-    </div>
+<div class="f-news">
+<h3>Get offers &amp; hair tips</h3>
+<form class="news" onsubmit="return false">
+<input type="email" placeholder="Your email address" aria-label="Email address">
+<button class="btn solid" type="submit">Sign up</button>
+</form>
+</div>
 
-    <div class="f-cols">
-      <div>
-        <h4>Quick links</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="special.html">Exclusive service<small>सैलून की विशिष्ट सेवाएँ</small></a></li>
-          <li><a href="booking.html">Booking<small>अपना पसंदीदा समय बुक करें</small></a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Company</h4>
-        <ul>
-          <li><a href="SALON DETAIL.html">About Shalon<small>हमारी पहचान</small></a></li>
-          <li><a href="booking.html">Book a seat</a></li>
-        </ul>
-      </div>
-    </div>
+<div class="f-cols">
+<div>
+<h4>Quick links</h4>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="special.html">Exclusive service<small>सैलून की विशिष्ट सेवाएँ</small></a></li>
+<li><a href="booking.html">Booking<small>अपना पसंदीदा समय बुक करें</small></a></li>
+</ul>
+</div>
+<div>
+<h4>Company</h4>
+<ul>
+<li><a href="SALON DETAIL.html">About Shalon<small>हमारी पहचान</small></a></li>
+<li><a href="booking.html">Book a seat</a></li>
+</ul>
+</div>
+</div>
 
-    <ul class="f-contact">
-      <li><i class="fa-solid fa-envelope"></i> your_mail@gmail.com</li>
-      <li><i class="fa-solid fa-phone"></i> +91-xxxxx-xxxxx</li>
-    </ul>
+<ul class="f-contact">
+<li><i class="fa-solid fa-envelope"></i> your_mail@gmail.com</li>
+<li><i class="fa-solid fa-phone"></i> +91-xxxxx-xxxxx</li>
+</ul>
 
-    <div class="social">
-      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-      <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-      <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-    </div>
-    <p class="copy">© 2026 Shalon. All rights reserved.</p>
-  </footer>
+<div class="social">
+<a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+<a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+<a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+</div>
+<p class="copy">© 2026 Shalon. All rights reserved.</p>
+</footer>
 
 </div>
 <script src="salon.js"></script>
@@ -437,242 +450,238 @@ section,.footer{padding-left:20px;padding-right:20px}
 <!-- HERO VIDEO -->
 <script>
 (function(){
-  var v=document.getElementById('heroVideo'); if(!v) return;
-  v.muted=true; v.defaultMuted=true; v.loop=true; v.controls=false;
-  v.setAttribute('muted',''); v.setAttribute('playsinline','');
-  function go(){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); }
-  go();
-  v.addEventListener('loadeddata',go);
-  v.addEventListener('canplay',go);
-  v.addEventListener('pause',function(){ if(!document.hidden) go(); });
-  v.addEventListener('ended',function(){ v.currentTime=0; go(); });
-  document.addEventListener('visibilitychange',function(){ if(!document.hidden) go(); });
-  window.addEventListener('pageshow',go);
-  ['touchstart','click','scroll'].forEach(function(e){
-    window.addEventListener(e,function(){ if(v.paused) go(); },{once:true,passive:true});
-  });
+var v=document.getElementById('heroVideo'); if(!v) return;
+v.muted=true; v.defaultMuted=true; v.loop=true; v.controls=false;
+v.setAttribute('muted',''); v.setAttribute('playsinline','');
+function go(){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); }
+go();
+v.addEventListener('loadeddata',go);
+v.addEventListener('canplay',go);
+v.addEventListener('pause',function(){ if(!document.hidden) go(); });
+v.addEventListener('ended',function(){ v.currentTime=0; go(); });
+document.addEventListener('visibilitychange',function(){ if(!document.hidden) go(); });
+window.addEventListener('pageshow',go);
+['touchstart','click','scroll'].forEach(function(e){
+window.addEventListener(e,function(){ if(v.paused) go(); },{once:true,passive:true});
+});
 })();
 </script>
 
 <!-- STORY: 225 FRAME SCROLL ANIMATION (Canvas & Sticky Pin) -->
 <script>
 (function(){
-  var TOTAL_FRAMES = 225;
-  var DEBUG = false; // Set to true to view frame scrubber badge: "frame X/225 | loaded N"
+var TOTAL_FRAMES = 225;
+var DEBUG = false;
 
-  var section = document.getElementById('storySection');
-  var stickyEl = document.getElementById('storySticky');
-  var box = document.getElementById('storyFrames');
-  var canvas = document.getElementById('storyCanvas');
-  var dbgBadge = document.getElementById('storyDbg');
-  var errBox = document.getElementById('storyErr');
-  var viewLabel = document.getElementById('storyViewLabel');
+var section = document.getElementById('storySection');
+var stickyEl = document.getElementById('storySticky');
+var box = document.getElementById('storyFrames');
+var canvas = document.getElementById('storyCanvas');
+var dbgBadge = document.getElementById('storyDbg');
+var errBox = document.getElementById('storyErr');
+var viewLabel = document.getElementById('storyViewLabel');
 
-  if(!section || !stickyEl || !box || !canvas) return;
+if(!section || !stickyEl || !box || !canvas) return;
 
-  var ctx = canvas.getContext('2d');
-  var frames = new Array(TOTAL_FRAMES);
-  var loadedCount = 0;
-  var currentFrameIndex = 1;
-  var hasDrawnAny = false;
-  var ticking = false;
+var ctx = canvas.getContext('2d');
+var frames = new Array(TOTAL_FRAMES);
+var loadedCount = 0;
+var currentFrameIndex = 1;
+var hasDrawnAny = false;
+var ticking = false;
 
-  // Frames ab main folder me hain (index.html ke saath), isliye folder ka naam hata diya
-  function getFramePath(i){
-    return 'frame_' + String(i).padStart(3,'0') + '.jpg';
-  }
+function getFramePath(i){
+return 'frame_' + String(i).padStart(3,'0') + '.jpg';
+}
 
-  function updateDebugBadge(frameNum){
-    if(!dbgBadge) return;
-    if(DEBUG){
-      dbgBadge.style.display = 'block';
-      dbgBadge.textContent = 'frame ' + frameNum + '/' + TOTAL_FRAMES + ' | loaded ' + loadedCount;
-    } else {
-      dbgBadge.style.display = 'none';
-    }
-  }
+function updateDebugBadge(frameNum){
+if(!dbgBadge) return;
+if(DEBUG){
+dbgBadge.style.display = 'block';
+dbgBadge.textContent = 'frame ' + frameNum + '/' + TOTAL_FRAMES + ' | loaded ' + loadedCount;
+} else {
+dbgBadge.style.display = 'none';
+}
+}
 
-  function showError(failedSrc){
-    if(!errBox) return;
-    errBox.style.display = 'flex';
-    errBox.textContent = 'Frame failed to load: ' + failedSrc;
-  }
+function showError(failedSrc){
+if(!errBox) return;
+errBox.style.display = 'flex';
+errBox.textContent = 'Frame failed to load: ' + failedSrc;
+}
 
-  function renderCover(img){
-    if(!ctx || !img || !img.complete || img.naturalWidth === 0 || canvas.width === 0 || canvas.height === 0) return;
+function renderCover(img){
+if(!ctx || !img || !img.complete || img.naturalWidth === 0 || canvas.width === 0 || canvas.height === 0) return;
 
-    var cw = canvas.width;
-    var ch = canvas.height;
-    var iw = img.naturalWidth;
-    var ih = img.naturalHeight;
+var cw = canvas.width;
+var ch = canvas.height;
+var iw = img.naturalWidth;
+var ih = img.naturalHeight;
 
-    var cRatio = cw / ch;
-    var iRatio = iw / ih;
+var cRatio = cw / ch;
+var iRatio = iw / ih;
 
-    var dw, dh, dx, dy;
+var dw, dh, dx, dy;
 
-    if(iRatio > cRatio){
-      dh = ch;
-      dw = iw * (ch / ih);
-      dx = (cw - dw) / 2;
-      dy = 0;
-    } else {
-      dw = cw;
-      dh = ih * (cw / iw);
-      dx = 0;
-      dy = (ch - dh) / 2;
-    }
+if(iRatio > cRatio){
+dh = ch;
+dw = iw * (ch / ih);
+dx = (cw - dw) / 2;
+dy = 0;
+} else {
+dw = cw;
+dh = ih * (cw / iw);
+dx = 0;
+dy = (ch - dh) / 2;
+}
 
-    ctx.clearRect(0, 0, cw, ch);
-    ctx.drawImage(img, dx, dy, dw, dh);
-    hasDrawnAny = true;
-  }
+ctx.clearRect(0, 0, cw, ch);
+ctx.drawImage(img, dx, dy, dw, dh);
+hasDrawnAny = true;
+}
 
-  function getNearestLoadedImage(targetNum){
-    var targetIdx = targetNum - 1;
-    if(frames[targetIdx] && frames[targetIdx].complete && frames[targetIdx].naturalWidth > 0){
-      return frames[targetIdx];
-    }
-    for(var offset = 1; offset < TOTAL_FRAMES; offset++){
-      var prev = targetIdx - offset;
-      if(prev >= 0 && frames[prev] && frames[prev].complete && frames[prev].naturalWidth > 0){
-        return frames[prev];
-      }
-      var next = targetIdx + offset;
-      if(next < TOTAL_FRAMES && frames[next] && frames[next].complete && frames[next].naturalWidth > 0){
-        return frames[next];
-      }
-    }
-    return null;
-  }
+function getNearestLoadedImage(targetNum){
+var targetIdx = targetNum - 1;
+if(frames[targetIdx] && frames[targetIdx].complete && frames[targetIdx].naturalWidth > 0){
+return frames[targetIdx];
+}
+for(var offset = 1; offset < TOTAL_FRAMES; offset++){
+var prev = targetIdx - offset;
+if(prev >= 0 && frames[prev] && frames[prev].complete && frames[prev].naturalWidth > 0){
+return frames[prev];
+}
+var next = targetIdx + offset;
+if(next < TOTAL_FRAMES && frames[next] && frames[next].complete && frames[next].naturalWidth > 0){
+return frames[next];
+}
+}
+return null;
+}
 
-  function drawCurrentFrame(){
-    var img = getNearestLoadedImage(currentFrameIndex);
-    if(img){
-      renderCover(img);
-    }
-    updateDebugBadge(currentFrameIndex);
-  }
+function drawCurrentFrame(){
+var img = getNearestLoadedImage(currentFrameIndex);
+if(img){
+renderCover(img);
+}
+updateDebugBadge(currentFrameIndex);
+}
 
-  function resizeCanvas(){
-    var rect = box.getBoundingClientRect();
-    var dpr = Math.min(window.devicePixelRatio || 1, 2);
-    var w = rect.width || 380;
-    var h = rect.height || 300;
+function resizeCanvas(){
+var rect = box.getBoundingClientRect();
+var dpr = Math.min(window.devicePixelRatio || 1, 2);
+var w = rect.width || 380;
+var h = rect.height || 300;
 
-    var newW = Math.round(w * dpr);
-    var newH = Math.round(h * dpr);
+var newW = Math.round(w * dpr);
+var newH = Math.round(h * dpr);
 
-    if(canvas.width !== newW || canvas.height !== newH){
-      canvas.width = newW;
-      canvas.height = newH;
-      drawCurrentFrame();
-    }
-  }
+if(canvas.width !== newW || canvas.height !== newH){
+canvas.width = newW;
+canvas.height = newH;
+drawCurrentFrame();
+}
+}
 
-  function loadSingleFrame(frameNum, onLoaded){
-    var idx = frameNum - 1;
-    if(frames[idx]){
-      if(frames[idx].complete && onLoaded) onLoaded(frames[idx]);
-      return;
-    }
+function loadSingleFrame(frameNum, onLoaded){
+var idx = frameNum - 1;
+if(frames[idx]){
+if(frames[idx].complete && onLoaded) onLoaded(frames[idx]);
+return;
+}
 
-    var img = new Image();
-    var src = getFramePath(frameNum);
-    img.src = src;
+var img = new Image();
+var src = getFramePath(frameNum);
+img.src = src;
 
-    img.onload = function(){
-      frames[idx] = img;
-      loadedCount++;
-      if(onLoaded) onLoaded(img);
-      updateDebugBadge(currentFrameIndex);
-      if(currentFrameIndex === frameNum || !hasDrawnAny){
-        drawCurrentFrame();
-      }
-    };
+img.onload = function(){
+frames[idx] = img;
+loadedCount++;
+if(onLoaded) onLoaded(img);
+updateDebugBadge(currentFrameIndex);
+if(currentFrameIndex === frameNum || !hasDrawnAny){
+drawCurrentFrame();
+}
+};
 
-    img.onerror = function(){
-      showError(src);
-    };
+img.onerror = function(){
+showError(src);
+};
 
-    frames[idx] = img;
-  }
+frames[idx] = img;
+}
 
-  function preloadRemainingFrames(){
-    var nextIndex = 2;
-    var BATCH_SIZE = 8;
-    var BATCH_INTERVAL = 30;
+function preloadRemainingFrames(){
+var nextIndex = 2;
+var BATCH_SIZE = 8;
+var BATCH_INTERVAL = 30;
 
-    function nextBatch(){
-      var count = 0;
-      while(nextIndex <= TOTAL_FRAMES && count < BATCH_SIZE){
-        loadSingleFrame(nextIndex);
-        nextIndex++;
-        count++;
-      }
-      if(nextIndex <= TOTAL_FRAMES){
-        setTimeout(nextBatch, BATCH_INTERVAL);
-      }
-    }
+function nextBatch(){
+var count = 0;
+while(nextIndex <= TOTAL_FRAMES && count < BATCH_SIZE){
+loadSingleFrame(nextIndex);
+nextIndex++;
+count++;
+}
+if(nextIndex <= TOTAL_FRAMES){
+setTimeout(nextBatch, BATCH_INTERVAL);
+}
+}
 
-    setTimeout(nextBatch, 50);
-  }
+setTimeout(nextBatch, 50);
+}
 
-  function updateScroll(){
-    ticking = false;
-    var rect = section.getBoundingClientRect();
-    var stickyHeight = stickyEl.offsetHeight;
-    var runway = rect.height - stickyHeight;
-    if(runway <= 0) return;
+function updateScroll(){
+ticking = false;
+var rect = section.getBoundingClientRect();
+var stickyHeight = stickyEl.offsetHeight;
+var runway = rect.height - stickyHeight;
+if(runway <= 0) return;
 
-    var stickyTop = parseFloat(window.getComputedStyle(stickyEl).top) || 104;
-    var progress = Math.max(0, Math.min(1, (stickyTop - rect.top) / runway));
-    var targetFrame = 1 + Math.round(progress * (TOTAL_FRAMES - 1));
-    if(viewLabel){
-      var viewIndex = Math.min(4, Math.floor((targetFrame - 1) / (TOTAL_FRAMES / 5)));
-      viewLabel.textContent = ['Front view', 'Left view', 'Back view', 'Right view', 'Front view'][viewIndex];
-    }
+var stickyTop = parseFloat(window.getComputedStyle(stickyEl).top) || 104;
+var progress = Math.max(0, Math.min(1, (stickyTop - rect.top) / runway));
+var targetFrame = 1 + Math.round(progress * (TOTAL_FRAMES - 1));
+if(viewLabel){
+var viewIndex = Math.min(4, Math.floor((targetFrame - 1) / (TOTAL_FRAMES / 5)));
+viewLabel.textContent = ['Front view', 'Left view', 'Back view', 'Right view', 'Front view'][viewIndex];
+}
 
-    if(targetFrame !== currentFrameIndex || !hasDrawnAny){
-      currentFrameIndex = targetFrame;
-      drawCurrentFrame();
-    }
-  }
+if(targetFrame !== currentFrameIndex || !hasDrawnAny){
+currentFrameIndex = targetFrame;
+drawCurrentFrame();
+}
+}
 
-  function onScroll(){
-    if(!ticking){
-      ticking = true;
-      requestAnimationFrame(updateScroll);
-    }
-  }
+function onScroll(){
+if(!ticking){
+ticking = true;
+requestAnimationFrame(updateScroll);
+}
+}
 
-  window.addEventListener('scroll', onScroll, {passive:true});
-  document.addEventListener('scroll', onScroll, {passive:true});
-  var mobileContainer = document.querySelector('.mobile-container');
-  if(mobileContainer){
-    mobileContainer.addEventListener('scroll', onScroll, {passive:true});
-  }
+window.addEventListener('scroll', onScroll, {passive:true});
+document.addEventListener('scroll', onScroll, {passive:true});
+var mobileContainer = document.querySelector('.mobile-container');
+if(mobileContainer){
+mobileContainer.addEventListener('scroll', onScroll, {passive:true});
+}
 
-  window.addEventListener('resize', function(){
-    resizeCanvas();
-    updateScroll();
-  }, {passive:true});
+window.addEventListener('resize', function(){
+resizeCanvas();
+updateScroll();
+}, {passive:true});
 
-  // Initialize
-  resizeCanvas();
-  updateDebugBadge(1);
+resizeCanvas();
+updateDebugBadge(1);
 
-  // Load Frame 1 first and show immediately
-  loadSingleFrame(1, function(frame1Img){
-    resizeCanvas();
-    renderCover(frame1Img);
-    updateScroll();
-    preloadRemainingFrames();
-  });
+loadSingleFrame(1, function(frame1Img){
+resizeCanvas();
+renderCover(frame1Img);
+updateScroll();
+preloadRemainingFrames();
+});
 
-  // Initial scroll sync
-  updateScroll();
+updateScroll();
 })();
 </script>
 </body>
-</html>
+</html> 
