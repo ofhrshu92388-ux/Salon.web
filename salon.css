@@ -18,7 +18,7 @@ body {
     min-height: 100vh;
     margin: auto;
     background: #0d0d0d;
-    padding: 20px 0 50px;
+    padding: 20px 0 0;
     overflow-x: clip;
 }
 .nv{
