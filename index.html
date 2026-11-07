@@ -39,7 +39,7 @@ section{padding:44px 20px}
 .btn.block{display:block;text-align:center;width:100%}
 .lead{color:var(--muted);font-size:14px;margin:14px 0 22px}
 
-/* ===== HERO (dark overlay over video, so text stays light) ===== */
+/* ===== HERO ===== */
 .hero{position:relative;min-height:640px;padding:110px 20px 36px;display:flex;flex-direction:column;justify-content:flex-end;text-align:center;overflow:hidden}
 .hero video::-webkit-media-controls,.hero video::-webkit-media-controls-start-playback-button,.hero video::-webkit-media-controls-overlay-play-button,.hero video::-webkit-media-controls-panel{display:none!important;-webkit-appearance:none;opacity:0}
 .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;z-index:0}
@@ -52,8 +52,8 @@ section{padding:44px 20px}
 .hero .btn.solid{background:#dfb15b;color:#1a0f0a}
 .hero .btns{display:flex;gap:10px;justify-content:center;margin-top:6px}
 
-/* ===== 3 CARDS (white text over image overlay) ===== */
-.cards{display:grid;gap:14px;padding-top:20px}
+/* ===== 3 CARDS ===== */
+.cards{display:grid;gap:14px;padding-top:20px; background-color: rgb(255, 249, 247);}
 .card{position:relative;height:250px;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;border:1px solid var(--line);background-size:cover;background-position:center}
 .card::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.85))}
 .card>*{position:relative}
@@ -65,7 +65,7 @@ section{padding:44px 20px}
 .c2{background-image:url('https://www.lorealprofessionnel.in/-/media/project/loreal/brand-sites/lp/apac/in/hair-styling/landing-page/lp_techni_art_all-white_new.jpg?rev=978910a1eee34291bf019a44443018f6&cx=0.48&cy=0.44&cw=1920&ch=1920&hash=4C06B0BBB22F4AA39F84CC1EE157455F')}
 .c3{background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMfWWqhnqsvd2nVAhHO0aEXGC0AvzzGhouAX6dW5saA3_AjI88C7gVAsNF&s=10')}
 
-/* ===== STORY (off-white) ===== */
+/* ===== STORY ===== */
 .story{background:var(--bg2)}
 .story .img{height:300px;border-radius:18px;background:url('1791623026520.png') center/cover;margin-bottom:22px;border:1px solid var(--line)}
 .story .img#storyFrames{background-color:#000;background-size:cover;background-position:center;background-repeat:no-repeat}
@@ -73,91 +73,17 @@ section{padding:44px 20px}
 .story p{color:var(--muted);font-size:14px}
 
 /* ===== STORY SCROLL-DRIVEN FRAME ANIMATION ===== */
-#storySection{
-position:relative;
-height:350vh;
-padding:0 20px;
-background:var(--bg2);
-box-sizing:border-box;
-}
-#storySection .story-sticky{
-position:-webkit-sticky;
-position:sticky;
-top:104px;
-padding-top:20px;
-padding-bottom:24px;
-width:100%;
-box-sizing:border-box;
-}
-#storySection .img#storyFrames{
-position:relative;
-height:370px;
-width:100%;
-border-radius:18px;
-border:1px solid var(--line);
-overflow:hidden;
-background-color:#000;
-margin-bottom:20px;
-box-sizing:border-box;
-}
-#storySection #storyCanvas{
-width:100%;
-height:100%;
-display:block;
-border-radius:17px;
-}
+#storySection{position:relative;height:350vh;padding:0 20px;background:var(--bg2);box-sizing:border-box}
+#storySection .story-sticky{position:-webkit-sticky;position:sticky;top:104px;padding-top:20px;padding-bottom:24px;width:100%;box-sizing:border-box}
+#storySection .img#storyFrames{position:relative;height:370px;width:100%;border-radius:18px;border:1px solid var(--line);overflow:hidden;background-color:#000;margin-bottom:20px;box-sizing:border-box}
+#storySection #storyCanvas{width:100%;height:100%;display:block;border-radius:17px}
 #storySection .story-view-label{
-display:block !important;
-position:relative !important;
-z-index:20 !important;
-width:100%;
-min-height:38px;
-margin:0 0 12px;
-padding:8px 12px;
-color:#b98a2e !important;
-background:#ffffff !important;
-border:1px solid rgba(185,138,46,.5);
-border-radius:10px;
-font-family:var(--head);
-font-size:19px !important;
-font-weight:600 !important;
-letter-spacing:2px;
-text-transform:uppercase;
-text-align: center;
-line-height:20px;
-opacity:1 !important;
-visibility:visible !important;
+display:block !important;position:relative !important;z-index:20 !important;width:100%;min-height:38px;margin:0 0 12px;padding:8px 12px;
+color:#b98a2e !important;background:#ffffff !important;border:1px solid rgba(185,138,46,.5);border-radius:10px;
+font-family:var(--head);font-size:19px !important;font-weight:600 !important;letter-spacing:2px;text-transform:uppercase;text-align:center;line-height:20px;opacity:1 !important;visibility:visible !important;
 }
-#storySection .story-debug{
-position:absolute;
-top:10px;
-right:10px;
-background:rgba(0,0,0,.75);
-color:#00ff88;
-font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
-font-size:11px;
-padding:4px 8px;
-border-radius:6px;
-border:1px solid rgba(0,255,136,.3);
-pointer-events:none;
-z-index:10;
-}
-#storySection .story-error{
-position:absolute;
-inset:10px;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:12px;
-text-align:center;
-color:#ff6b6b;
-background:rgba(1,4,10,.95);
-border:1px solid #ff4d4d;
-border-radius:12px;
-font-size:12px;
-word-break:break-all;
-z-index:11;
-}
+#storySection .story-debug{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.75);color:#00ff88;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:11px;padding:4px 8px;border-radius:6px;border:1px solid rgba(0,255,136,.3);pointer-events:none;z-index:10}
+#storySection .story-error{position:absolute;inset:10px;display:flex;align-items:center;justify-content:center;padding:12px;text-align:center;color:#ff6b6b;background:rgba(1,4,10,.95);border:1px solid #ff4d4d;border-radius:12px;font-size:12px;word-break:break-all;z-index:11}
 @media (max-height:640px){
 #storySection .story-sticky{top:88px;padding-top:10px}
 #storySection .img#storyFrames{height:min(320px,48vh);margin-bottom:14px}
@@ -195,7 +121,7 @@ z-index:11;
 .post h3{font-size:22px;color:var(--cream);margin-top:4px}
 .post span{font-size:12px;color:var(--muted)}
 
-/* ===== FOOTER (off-white) ===== */
+/* ===== FOOTER ===== */
 .footer{background:linear-gradient(180deg,var(--bg2),#f1ebdf);border-top:1px solid var(--line);padding:44px 22px 28px}
 .f-brand{text-align:center}
 .f-brand .mark{width:54px;height:54px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;margin:0 auto 12px;color:var(--gold);font-size:20px}
@@ -222,7 +148,6 @@ z-index:11;
 .social a{width:44px;height:44px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--gold);text-decoration:none}
 .social a:hover{background:var(--gold);color:#fff}
 .copy{text-align:center;font-size:11px;color:#8d8176;margin:22px 0 0}
-
 
 /* ===== ALIGNMENT FIXES ===== */
 html,body{overflow-x:clip}
@@ -269,17 +194,28 @@ section,.footer{padding-left:20px;padding-right:20px}
 .nvc{width:calc(100% - 20px);max-width:390px}
 .brand-nav{position:absolute;top:50%;left:50%;right:auto;transform:translate(-50%,-50%);height:auto;max-width:none;width:max-content}
 
-/* ===== MELODRAMA FONT (menu titles) + THEME RE-ASSERT AFTER salon.css ===== */
+/* ===== MELODRAMA FONT (menu titles) + THEME RE-ASSERT ===== */
 .nvchh{font-family:var(--head);font-weight:500}
 body{background:var(--bg);color:var(--text)}
 .story,#storySection{background:var(--bg2)}
 
+/* ===== BLOG POPUP (unique names so salon.css cannot clash) ===== */
+.bpop{position:fixed!important;top:0!important;left:0!important;right:0!important;bottom:0!important;background:rgba(0,0,0,.75)!important;display:none!important;align-items:center;justify-content:center;z-index:2147483000!important;padding:16px;transform:none!important}
+.bpop.open{display:flex!important}
+.bpop-box{position:relative;width:100%;max-width:390px;max-height:88vh;overflow-y:auto;background:#fff;border-radius:14px;border:1px solid var(--line)}
+.bpop-bar{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff;z-index:2}
+.bpop-bar b{font-family:var(--head);font-size:16px;color:var(--cream)}
+.bpop-close{width:34px;height:34px;border-radius:50%;border:1px solid var(--gold);background:#fff;color:var(--gold);font-size:20px;line-height:1;cursor:pointer;padding:0}
+.bpop .hc{width:100%;height:auto;border-radius:0;border:0;margin:0;overflow:hidden;background:#fff}
+.bpop .hcyt{width:100%;aspect-ratio:16/9;margin:0;border:0}
+.bpop .hcyt iframe{width:100%;height:100%;border:0;display:block}
+.bpop .hcp{font-size:15px;font-weight:bold;padding:12px 15px 18px 20px;margin:0;color:var(--text)}
 </style>
 </head>
 <body>
 <div class="mobile-container">
 
-<!-- NAVBAR (same as before) + BRAND LOGO -->
+<!-- NAVBAR + BRAND LOGO -->
 <nav class="nv">
 <div class="nvmn" id="nvmn">
 <div class="menu-circle">
@@ -393,8 +329,8 @@ body{background:var(--bg);color:var(--text)}
 <!-- BLOG -->
 <section class="story">
 <div class="head"><h2>Hair tips &amp; insights</h2></div>
-<a href="#" class="post"><div class="pic" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZKs2LlQDqoWXg4TVcefrcnYHuTX5jMCkz4CoFMiQtcWSLlq6bAwI6_KY&s=10https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80')"></div><small>HAIR CARE</small><h3>How to Keep Colour Fresh Longer</h3><span>October 24, 2026</span></a>
-<a href="#" class="post"><div class="pic" style="background-image:url('https://viralpur.org/wp-content/uploads/2026/10/ChatGPT-Hairstyle-Prompt-for-man.png')"></div><small>GROOMING</small><h3>Choosing the Right Cut for Your Face</h3><span>October 24, 2026</span></a>
+<a href="#" class="post" data-blogpop="blogpop1"><div class="pic" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZKs2LlQDqoWXg4TVcefrcnYHuTX5jMCkz4CoFMiQtcWSLlq6bAwI6_KY&s=10')"></div><small>HAIR CARE</small><h3>How to Keep Colour Fresh Longer</h3><span>October 24, 2026</span></a>
+<a href="#" class="post" data-blogpop="blogpop2"><div class="pic" style="background-image:url('https://viralpur.org/wp-content/uploads/2026/10/ChatGPT-Hairstyle-Prompt-for-man.png')"></div><small>GROOMING</small><h3>Choosing the Right Cut for Your Face</h3><span>October 24, 2026</span></a>
 </section>
 
 <!-- FOOTER -->
@@ -441,8 +377,91 @@ body{background:var(--bg);color:var(--text)}
 <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
 <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
 </div>
-<p class="copy">© 2026 Shalon. All rights reserved.</p>
 </footer>
+
+<!-- BLOG POPUP 1 -->
+<div class="bpop" id="blogpop1" aria-hidden="true">
+<div class="bpop-box" role="dialog" aria-modal="true">
+<div class="bpop-bar">
+<b>Hair Care</b>
+<button class="bpop-close" type="button" aria-label="Close">&times;</button>
+</div>
+<div class="hc">
+<div class="hcyt">
+<iframe
+data-src="https://www.youtube.com/embed/fvgdROgSQj4"
+title="YouTube video player"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen>
+</iframe>
+</div>
+<p class="hcp">Traya offers a science-based hair fall solution that targets the root cause of hair loss, not just the symptoms. Its plan combines three approaches: Ayurveda, dermatology, and nutrition.
+<br><br>
+The process has three steps. First, you take a 2-4 minute online hair test to identify what’s behind your hair fall. Second, based on your answers, experts suggest a personalised plan. Third, a Traya hair coach guides you through your journey, which typically lasts 3-5 months.
+<br><br>
+The plan looks at five key factors that affect hair health: nutrition, digestion, hormones, stress, and environment. For example, nutrient deficiencies can slow growth, while high stress can disrupt the natural hair cycle and increase shedding.
+<br><br>
+Daily use is simple: the “2x2 routine” takes about two minutes, twice a day. Traya says 93% of users noticed results within five months, though this comes from its own internal study (December 2022), not independent research.
+</p>
+</div>
+</div>
+</div>
+
+<!-- BLOG POPUP 2 -->
+<div class="bpop" id="blogpop2" aria-hidden="true">
+<div class="bpop-box" role="dialog" aria-modal="true">
+<div class="bpop-bar">
+<b>Grooming</b>
+<button class="bpop-close" type="button" aria-label="Close">&times;</button>
+</div>
+<div class="hc">
+<div class="hcyt">
+<iframe
+data-src="https://www.youtube.com/embed/zXIofF28eYk"
+title="YouTube video player"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen>
+</iframe>
+</div>
+<p class="hcp">Choosing the right haircut is essential for enhancing your appearance and highlighting your best features. Every face shape is unique, and the right hairstyle can create balance, improve proportions, and complement your personality. Before selecting a haircut, consider your face shape, hair texture, thickness, and personal style. Oval faces suit various hairstyles, while round faces benefit from cuts that add height and definition. Square faces look great with softer layers and textured styles, whereas longer faces can be balanced with fringes and fuller hairstyles.
+<br><br>
+Your lifestyle and grooming routine also play an important role in choosing the perfect haircut. A professional barber can recommend styles that suit your facial structure and preferences. Whether you prefer a modern fade, classic side part, textured crop, or longer hairstyle, choose a cut that makes you feel confident and comfortable. Communicate clearly with your barber and maintain your haircut regularly to achieve a clean, stylish, and well-groomed appearance.
+</p>
+</div>
+</div>
+</div>
+
+<!-- BLOG POPUP 3 -->
+<div class="bpop" id="blogpop3" aria-hidden="true">
+<div class="bpop-box" role="dialog" aria-modal="true">
+<div class="bpop-bar">
+<b>Hair Care</b>
+<button class="bpop-close" type="button" aria-label="Close">&times;</button>
+</div>
+<div class="hc">
+
+<div class="hcyt">
+  <iframe
+    data-src="https://www.youtube.com/embed/zXIofF28eYk"
+    title="YouTube video player"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</div>
+
+<p class="hcp">Traya offers a science-based hair fall solution that targets the root cause of hair loss, not just the symptoms. Its plan combines three approaches: Ayurveda, dermatology, and nutrition.
+<br><br>
+The process has three steps. First, you take a 2-4 minute online hair test to identify what’s behind your hair fall. Second, based on your answers, experts suggest a personalised plan. Third, a Traya hair coach guides you through your journey, which typically lasts 3-5 months.
+<br><br>
+The plan looks at five key factors that affect hair health: nutrition, digestion, hormones, stress, and environment. For example, nutrient deficiencies can slow growth, while high stress can disrupt the natural hair cycle and increase shedding.
+<br><br>
+Daily use is simple: the “2x2 routine” takes about two minutes, twice a day. Traya says 93% of users noticed results within five months, though this comes from its own internal study (December 2022), not independent research.
+</p>
+
+</div>
+</div>
+</div>
 
 </div>
 <script src="salon.js"></script>
@@ -467,12 +486,11 @@ window.addEventListener(e,function(){ if(v.paused) go(); },{once:true,passive:tr
 })();
 </script>
 
-<!-- STORY: 225 FRAME SCROLL ANIMATION (Canvas & Sticky Pin) -->
+<!-- STORY: 225 FRAME SCROLL ANIMATION -->
 <script>
 (function(){
 var TOTAL_FRAMES = 225;
 var DEBUG = false;
-
 var section = document.getElementById('storySection');
 var stickyEl = document.getElementById('storySticky');
 var box = document.getElementById('storyFrames');
@@ -480,7 +498,6 @@ var canvas = document.getElementById('storyCanvas');
 var dbgBadge = document.getElementById('storyDbg');
 var errBox = document.getElementById('storyErr');
 var viewLabel = document.getElementById('storyViewLabel');
-
 if(!section || !stickyEl || !box || !canvas) return;
 
 var ctx = canvas.getContext('2d');
@@ -490,9 +507,7 @@ var currentFrameIndex = 1;
 var hasDrawnAny = false;
 var ticking = false;
 
-function getFramePath(i){
-return 'frame_' + String(i).padStart(3,'0') + '.jpg';
-}
+function getFramePath(i){ return 'frame_' + String(i).padStart(3,'0') + '.jpg'; }
 
 function updateDebugBadge(frameNum){
 if(!dbgBadge) return;
@@ -512,29 +527,14 @@ errBox.textContent = 'Frame failed to load: ' + failedSrc;
 
 function renderCover(img){
 if(!ctx || !img || !img.complete || img.naturalWidth === 0 || canvas.width === 0 || canvas.height === 0) return;
-
-var cw = canvas.width;
-var ch = canvas.height;
-var iw = img.naturalWidth;
-var ih = img.naturalHeight;
-
-var cRatio = cw / ch;
-var iRatio = iw / ih;
-
+var cw = canvas.width, ch = canvas.height, iw = img.naturalWidth, ih = img.naturalHeight;
+var cRatio = cw / ch, iRatio = iw / ih;
 var dw, dh, dx, dy;
-
 if(iRatio > cRatio){
-dh = ch;
-dw = iw * (ch / ih);
-dx = (cw - dw) / 2;
-dy = 0;
+dh = ch; dw = iw * (ch / ih); dx = (cw - dw) / 2; dy = 0;
 } else {
-dw = cw;
-dh = ih * (cw / iw);
-dx = 0;
-dy = (ch - dh) / 2;
+dw = cw; dh = ih * (cw / iw); dx = 0; dy = (ch - dh) / 2;
 }
-
 ctx.clearRect(0, 0, cw, ch);
 ctx.drawImage(img, dx, dy, dw, dh);
 hasDrawnAny = true;
@@ -547,22 +547,16 @@ return frames[targetIdx];
 }
 for(var offset = 1; offset < TOTAL_FRAMES; offset++){
 var prev = targetIdx - offset;
-if(prev >= 0 && frames[prev] && frames[prev].complete && frames[prev].naturalWidth > 0){
-return frames[prev];
-}
+if(prev >= 0 && frames[prev] && frames[prev].complete && frames[prev].naturalWidth > 0){ return frames[prev]; }
 var next = targetIdx + offset;
-if(next < TOTAL_FRAMES && frames[next] && frames[next].complete && frames[next].naturalWidth > 0){
-return frames[next];
-}
+if(next < TOTAL_FRAMES && frames[next] && frames[next].complete && frames[next].naturalWidth > 0){ return frames[next]; }
 }
 return null;
 }
 
 function drawCurrentFrame(){
 var img = getNearestLoadedImage(currentFrameIndex);
-if(img){
-renderCover(img);
-}
+if(img){ renderCover(img); }
 updateDebugBadge(currentFrameIndex);
 }
 
@@ -571,10 +565,8 @@ var rect = box.getBoundingClientRect();
 var dpr = Math.min(window.devicePixelRatio || 1, 2);
 var w = rect.width || 380;
 var h = rect.height || 300;
-
 var newW = Math.round(w * dpr);
 var newH = Math.round(h * dpr);
-
 if(canvas.width !== newW || canvas.height !== newH){
 canvas.width = newW;
 canvas.height = newH;
@@ -588,33 +580,22 @@ if(frames[idx]){
 if(frames[idx].complete && onLoaded) onLoaded(frames[idx]);
 return;
 }
-
 var img = new Image();
 var src = getFramePath(frameNum);
 img.src = src;
-
 img.onload = function(){
 frames[idx] = img;
 loadedCount++;
 if(onLoaded) onLoaded(img);
 updateDebugBadge(currentFrameIndex);
-if(currentFrameIndex === frameNum || !hasDrawnAny){
-drawCurrentFrame();
-}
+if(currentFrameIndex === frameNum || !hasDrawnAny){ drawCurrentFrame(); }
 };
-
-img.onerror = function(){
-showError(src);
-};
-
+img.onerror = function(){ showError(src); };
 frames[idx] = img;
 }
 
 function preloadRemainingFrames(){
-var nextIndex = 2;
-var BATCH_SIZE = 8;
-var BATCH_INTERVAL = 30;
-
+var nextIndex = 2, BATCH_SIZE = 8, BATCH_INTERVAL = 30;
 function nextBatch(){
 var count = 0;
 while(nextIndex <= TOTAL_FRAMES && count < BATCH_SIZE){
@@ -622,11 +603,8 @@ loadSingleFrame(nextIndex);
 nextIndex++;
 count++;
 }
-if(nextIndex <= TOTAL_FRAMES){
-setTimeout(nextBatch, BATCH_INTERVAL);
+if(nextIndex <= TOTAL_FRAMES){ setTimeout(nextBatch, BATCH_INTERVAL); }
 }
-}
-
 setTimeout(nextBatch, 50);
 }
 
@@ -636,7 +614,6 @@ var rect = section.getBoundingClientRect();
 var stickyHeight = stickyEl.offsetHeight;
 var runway = rect.height - stickyHeight;
 if(runway <= 0) return;
-
 var stickyTop = parseFloat(window.getComputedStyle(stickyEl).top) || 104;
 var progress = Math.max(0, Math.min(1, (stickyTop - rect.top) / runway));
 var targetFrame = 1 + Math.round(progress * (TOTAL_FRAMES - 1));
@@ -644,7 +621,6 @@ if(viewLabel){
 var viewIndex = Math.min(4, Math.floor((targetFrame - 1) / (TOTAL_FRAMES / 5)));
 viewLabel.textContent = ['Front view', 'Left view', 'Back view', 'Right view', 'Front view'][viewIndex];
 }
-
 if(targetFrame !== currentFrameIndex || !hasDrawnAny){
 currentFrameIndex = targetFrame;
 drawCurrentFrame();
@@ -661,9 +637,7 @@ requestAnimationFrame(updateScroll);
 window.addEventListener('scroll', onScroll, {passive:true});
 document.addEventListener('scroll', onScroll, {passive:true});
 var mobileContainer = document.querySelector('.mobile-container');
-if(mobileContainer){
-mobileContainer.addEventListener('scroll', onScroll, {passive:true});
-}
+if(mobileContainer){ mobileContainer.addEventListener('scroll', onScroll, {passive:true}); }
 
 window.addEventListener('resize', function(){
 resizeCanvas();
@@ -683,5 +657,55 @@ preloadRemainingFrames();
 updateScroll();
 })();
 </script>
+
+<!-- BLOG POPUP SCRIPT (works for blogpop1, blogpop2, ...) -->
+<script>
+(function(){
+var openPop = null;
+
+// move popups directly under <body> so nothing can hide them
+document.querySelectorAll('.bpop').forEach(function(p){ document.body.appendChild(p); });
+
+function openPopup(id){
+var pop = document.getElementById(id);
+if(!pop) return;
+var f = pop.querySelector('iframe');
+if(f && !f.getAttribute('src')) f.setAttribute('src', f.getAttribute('data-src') + '?autoplay=1&rel=0');
+pop.classList.add('open');
+pop.setAttribute('aria-hidden','false');
+document.body.style.overflow = 'hidden';
+openPop = pop;
+}
+
+function closePopup(){
+if(!openPop) return;
+var f = openPop.querySelector('iframe');
+if(f) f.removeAttribute('src');
+openPop.classList.remove('open');
+openPop.setAttribute('aria-hidden','true');
+document.body.style.overflow = '';
+openPop = null;
+}
+
+// one listener on the document (capture phase) so other scripts cannot block it
+document.addEventListener('click', function(e){
+var t = e.target.closest ? e.target.closest('[data-blogpop]') : null;
+if(t){
+e.preventDefault();
+e.stopPropagation();
+openPopup(t.getAttribute('data-blogpop'));
+return;
+}
+if(openPop && (e.target === openPop || e.target.closest('.bpop-close'))){
+e.preventDefault();
+closePopup();
+}
+}, true);
+
+document.addEventListener('keydown', function(e){
+if(e.key === 'Escape') closePopup();
+});
+})();
+</script>
 </body>
-</html> 
+</html>
